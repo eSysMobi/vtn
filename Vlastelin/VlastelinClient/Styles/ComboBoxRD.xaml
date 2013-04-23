@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CommonRD.xaml"/>
+        <ResourceDictionary Source="TextBlockRD.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- CONBOBOX -->
+
+    <Style
+		x:Key="ComboBox_BaseStyle"
+		TargetType="{x:Type ComboBox}"
+		BasedOn="{StaticResource BaseStyle}">
+        <Setter
+			Property="Margin"
+			Value="{StaticResource Margin_Default}" />
+        <Setter
+			Property="Padding"
+			Value="2" />
+        <Setter
+            Property="Height"
+            Value="{StaticResource TextElement_Default_Height}">
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger
+				Property="IsEnabled"
+				Value="False">
+                <Setter
+					Property="Opacity"
+					Value="0.75" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="{x:Type ComboBox}"
+		TargetType="{x:Type ComboBox}"
+		BasedOn="{StaticResource ComboBox_BaseStyle}">
+        <Setter
+			Property="Background"
+			Value="{DynamicResource TextBox_Background_Normal_Brush}" />
+        <Setter
+			Property="BorderBrush"
+			Value="{DynamicResource TextBox_Border_Normal_Brush}" />
+        <Setter
+			Property="Border.CornerRadius"
+			Value="2" />
+        <Setter
+			Property="BorderThickness"
+			Value="1" />
+        <Setter
+			Property="VerticalContentAlignment"
+			Value="Center" />
+        <Setter
+			Property="FocusVisualStyle"
+			Value="{x:Null}" />
+    </Style>
+
+    <!--=======================================-->
+
+        <!-- / COMBOBOX -->
+
+</ResourceDictionary>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model.ExportedData" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model.ExportedData" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfExportedRKO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExportedRKO" nillable="true" type="tns:ExportedRKO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExportedRKO" nillable="true" type="tns:ArrayOfExportedRKO" />
+  <xs:complexType name="ExportedRKO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BusName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocNum" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DriverFIO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DriverId" type="xs:int" />
+      <xs:element minOccurs="0" name="DriverPassport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorFIO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="OwnerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sum" type="xs:double" />
+      <xs:element minOccurs="0" name="TripDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TripName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rkoId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExportedRKO" nillable="true" type="tns:ExportedRKO" />
+</xs:schema>

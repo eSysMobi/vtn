@@ -1,0 +1,199 @@
+﻿<local:WindowBase x:Class="VlastelinClient.Windows.WindowPassengerList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:VlastelinClient.UserControls"
+        xmlns:extToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended"
+        xmlns:local="clr-namespace:VlastelinClient"
+        xml:lang="ru-RU"
+        Title="Список пассажиров" 
+        Icon="..\Images\Icons\logo.ico"
+        WindowStartupLocation="CenterScreen"
+        Height="330" 
+        Width="450" Loaded="WindowBase_Loaded">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Border
+            Style="{StaticResource Border_GroupStyle}">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid
+                    Grid.Row="1"
+                    Margin="0,20,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="250"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="За промежуток от">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="До"
+                        Margin="5,0,0,20">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="Фамилия">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Имя">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Отчество">
+                    </TextBlock>
+
+                    <uc:CustomDatePicker
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        x:Name="datePickerFrom">
+                    </uc:CustomDatePicker>
+
+                    <uc:CustomDatePicker
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        x:Name="datePickerTo"
+                        Margin="5,0,0,20">
+                    </uc:CustomDatePicker>
+
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Name="textBoxSurname"
+                        Text="{Binding Surname, Mode=OneWay}" >
+                    </TextBox>
+
+                    <TextBox
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Name="textBoxName"
+                        Text="{Binding Name, Mode=OneWay}">
+                    </TextBox>
+
+                    <TextBox
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Name="textBoxPatronymic"
+                        Text="{Binding Patronymic, Mode=OneWay}">
+                    </TextBox>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!--<DataGrid
+            Grid.Row="1" 
+            Name="dataGridPassengers"
+            ItemsSource="{Binding Passengers}"
+            IsReadOnly="True"
+            RowStyle="{StaticResource DataGrid_Row_Style}" 
+            CellStyle="{StaticResource DataGrid_Cell_Style}" 
+            MouseDoubleClick="dataGridPassengers_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn
+                    Width="*"
+                    Header="ФИО пассажира"
+                    HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding FullName, Mode=OneWay}"
+                                Style="{StaticResource TextBlock_DataGridCell_Style}">
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Width="0.5*"
+                    Header="Серия паспорта"
+                    HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding DocSer, Mode=OneWay}"
+                                Style="{StaticResource TextBlock_DataGridCell_Style}">
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Width="0.5*"
+                    Header="Номер паспорта"
+                    HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding DocNum, Mode=OneWay}"
+                                Style="{StaticResource TextBlock_DataGridCell_Style}">
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>-->
+        
+        <Grid
+            Grid.Row="2"
+            HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Button
+                Grid.Column="0"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Command="{Binding ShowReportCommand}"
+                Content="Отчет">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValuesConverter}">
+                        <Binding ElementName="textBoxSurname" Path="Text" />
+                        <Binding ElementName="textBoxName" Path="Text" />
+                        <Binding ElementName="textBoxPatronymic" Path="Text" />
+                        <Binding ElementName="datePickerFrom" Path="SelectedDate" />
+                        <Binding ElementName="datePickerTo" Path="SelectedDate" />
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+
+            <Button
+                Grid.Column="1"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Content="Выход" Click="Button_Click">
+            </Button>
+        </Grid>
+    </Grid>
+</local:WindowBase>

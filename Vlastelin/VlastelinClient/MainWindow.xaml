@@ -1,0 +1,842 @@
+﻿<Window x:Class="VlastelinClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:uc="clr-namespace:VlastelinClient.UserControls"
+        xml:lang="ru-RU"
+        Title="{Binding WindowTitle}" 
+        Height="700" 
+        Width="1050"
+        MinWidth="900"
+        MinHeight="500"
+        Loaded="Window_Loaded" 
+        
+        WindowStartupLocation="CenterScreen"
+        Icon="Images\Icons\logo.ico">
+    <Grid
+        IsEnabled="{Binding IsWindowEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Menu
+            Grid.Row="0">
+
+            <MenuItem
+                Header="Отчеты">
+                <MenuItem 
+                    Header="Отчет по поездкам пассажира"
+                    Command="{Binding reportVM.ReportPassengerCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Анализ продаж"
+                    Command="{Binding reportVM.ReportSalesAnalysisCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Отчет по РКО"
+                    Command="{Binding reportVM.ReportRKOCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Отчет по ПКО"
+                    Command="{Binding reportVM.ReportPKOCommand}">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem
+                Header="Справочники"
+                IsEnabled="{Binding FlagIsAdmin}">
+                <MenuItem 
+                    Header="Города"
+                    Command="{Binding CatalogTownsCommand}"> 
+                </MenuItem>
+                <MenuItem 
+                    Header="Водители"
+                    Command="{Binding CatalogDriversCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Перевозчики"
+                    Command="{Binding CatalogOwnersCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Автобусы"
+                    Command="{Binding CatalogBusesCommand}">
+                </MenuItem>
+                
+                <Separator></Separator>
+                
+                <MenuItem 
+                    Header="Маршруты"
+                    Command="{Binding CatalogTripsCommand}">
+                </MenuItem>
+
+                <MenuItem 
+                    Header="Расписание"
+                    Command="{Binding CatalogTripShedulesCommand}">
+                </MenuItem>
+
+                <Separator></Separator>
+                
+                <MenuItem 
+                    Header="Филиалы"
+                    Command="{Binding CatalogBranchesCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Операторы"
+                    Command="{Binding CatalogOperatorsCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Настройки организации"
+                    Command="{Binding ShowSettingsCommand}">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem
+                Header="Действия">
+                <MenuItem 
+                    Header="Отправить автобус в рейс"
+                    Command="{Binding BusDepartureCommand}"
+                    CommandParameter="{Binding ElementName=listBoxTripShedules, Path=SelectedItem}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Отменить отправку автобуса"
+                    Command="{Binding DeparturedBusesCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Печать РКО"
+                    Command="{Binding ListRKOCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Туалет"
+                    Command="{Binding AdditionalServicesCommand}" CommandParameter="0">
+                </MenuItem>
+                <MenuItem 
+                    Header="Камера хранения"
+                    Command="{Binding AdditionalServicesCommand}" CommandParameter="1">
+                </MenuItem>
+                
+                <Separator></Separator>
+                
+                <MenuItem 
+                    Header="Внести наличные в кассу"
+                    Command="{Binding DepositMoneyCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Изъять наличные из кассы"
+                    Command="{Binding WithdrawMoneyCommand}">
+                </MenuItem>              
+                <MenuItem 
+                    Header="Х-отчет"
+                    Command="{Binding SessionReportCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Закрыть смену"
+                    Command="{Binding CloseSessionCommand}">
+                </MenuItem>
+
+                <Separator></Separator>
+
+                <MenuItem 
+                    Header="Подключиться к серверу"
+                    Command="{Binding ConnectToServerCommand}">
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem
+                Header="ККМ">
+                <MenuItem 
+                    Header="Подключить ККМ"
+                    Command="{Binding TurnOnKKMCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Сбросить состояние ККМ"
+                    Command="{Binding ResetKKMStateCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Настройки ККМ"
+                    Command="{Binding ShowKKMSettingsCommand}">
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem
+                Header="Экспорт">
+                <MenuItem 
+                    Header="Экспорт РКО"
+                    Command="{Binding ExportRKOCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Экспорт ПКО"
+                    Command="{Binding ExporPKOCommand}">
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem
+                Header="О программе">
+                <MenuItem 
+                    Header="Информация о программе"
+                    Command="{Binding ShowAboutWindowCommand}">
+                </MenuItem>
+                <MenuItem 
+                    Header="Отправить отчет об ошибке"
+                    Command="{Binding SendErrorReportCommand}">
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem
+                Header="Выход" Click="MenuItem_Click">
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray 
+            Grid.Row="1"
+            Background="White">
+            <ToolBar Band="1" BandIndex="1">
+                <Button
+                    ToolTip="Отправка автобуса в рейс"
+                    Command="{Binding BusDepartureCommand}"
+                    CommandParameter="{Binding ElementName=listBoxTripShedules, Path=SelectedItem}">
+                    <Image Source="Images\Toolbar\busDepartureIcon.png" Height="32" Width="32"/>
+                </Button>
+                <Button
+                    ToolTip="Отчет - анализ продаж"
+                    Command="{Binding reportVM.ReportSalesAnalysisCommand}">
+                    <Image Source="Images\Toolbar\salesReportIcon.png" Height="32" Width="32"/>
+                </Button>
+                <Button
+                    ToolTip="Внесение наличных в кассу"
+                    Command="{Binding DepositMoneyCommand}">
+                    <Image Source="Images\Toolbar\depositMoneyIcon.png" Height="32" Width="32" />
+                </Button>
+                <Separator></Separator>
+                <Button
+                    ToolTip="Туалет"
+                    Command="{Binding AdditionalServicesCommand}" CommandParameter="0">
+                    <Image Source="Images\Toolbar\toiletIcon.png" Height="32" Width="32" />
+                </Button>
+                <Button
+                    ToolTip="Камера хранения"
+                    Command="{Binding AdditionalServicesCommand}" CommandParameter="1">
+                    <Image Source="Images\Toolbar\saveCellIcon.png" Height="32" Width="32" />
+                </Button>
+                <!--<Button
+                    ToolTip="Настройки организации"
+                    Command="{Binding ShowSettingsCommand}">
+                    <Image Source="Images\Toolbar\serverSettingsIcon.png" Height="32" Width="32" />
+                </Button>-->
+            </ToolBar>
+        </ToolBarTray>
+
+        <Border
+            Grid.Row="2"
+            Height="30"
+            Style="{StaticResource Border_LineStyle}">
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                    Text="Город :  "
+                    Foreground="LightCyan">
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                    Text="{Binding CurrentOperator.Branch.Town.Name}">
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                    Text="Оператор :  "
+                    Foreground="LightCyan">
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                    Text="{Binding CurrentOperator.Surname}">
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                    Text="{Binding CurrentOperator.Name}">
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                    Text="{Binding CurrentOperator.Patronymic}">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border
+            Grid.Row="3"
+            Style="{StaticResource Border_GroupStyle}">
+                      
+            <Grid
+                IsEnabled="{Binding IsServerEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Border
+                    Grid.Column="0"
+                    Style="{StaticResource Border_GroupStyle}"
+                    MinWidth="250">
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        Height="30"
+                        Style="{StaticResource Border_LineStyle}">
+
+                        <TextBlock
+                            Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                            Text="Маршрут">
+                        </TextBlock>
+                    </Border>
+                    
+                    <ListBox
+                        Name="listBoxTrips" 
+                        Grid.Row="1"
+                        Style="{StaticResource ListBox_ItemList_Style}"
+                        ItemsSource="{Binding Trips, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        ItemTemplate="{StaticResource ListBoxItem_TripSmall_Template}" 
+                        SelectionChanged="listBoxTrips_SelectionChanged"
+                        Loaded="listBoxTrips_Loaded">
+                    </ListBox>
+
+                        <Border
+                        Grid.Row="2"
+                    Style="{StaticResource Border_GroupStyle}">
+                            <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="Из пункта ">
+                            </TextBlock>
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="В пункт ">
+                            </TextBlock>
+                        
+                            <ComboBox
+                                Name="comboBoxDeparture"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                ItemsSource="{Binding RouteTowns1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedItem="{Binding ElementName=listBoxTrips, Path=SelectedItem.Departure.Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectionChanged="comboBoxDeparture_SelectionChanged">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Text="{Binding Name, Mode=OneWay}"
+                                                TextTrimming="CharacterEllipsis"
+                                                TextWrapping="NoWrap">
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            <ComboBox
+                                Name="comboBoxArrival"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                ItemsSource="{Binding RouteTowns2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedItem="{Binding ElementName=listBoxTrips, Path=SelectedItem.Arrival.Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectionChanged="comboBoxArrival_SelectionChanged">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Text="{Binding Name, Mode=OneWay}"
+                                                TextTrimming="CharacterEllipsis"
+                                                TextWrapping="NoWrap">
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            <!--<DataGrid
+                            CanUserSortColumns="False"
+                            CellStyle="{StaticResource DataGrid_MatrixCell_Style}"
+                            Style="{StaticResource DataGrid_MatrixStyle}"
+                            IsReadOnly="True"
+                            MinWidth="50"
+                            MinHeight="50"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Name="dataGridMatrix"
+                            ItemsSource="{Binding ElementName=listBoxTrips, Path=SelectedItem.PriceMatrix.DefaultView, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+                            SelectedCellsChanged="dataGridMatrix_SelectedCellsChanged">
+                        </DataGrid>-->
+                    </Grid>
+                            </Border>
+
+                            <Grid Grid.Row="3">
+
+                        </Grid>         
+                    
+                </Grid>
+                </Border>
+
+                <GridSplitter 
+                    Grid.Column="1" 
+                    Width="3"
+                    VerticalAlignment="Stretch" 
+                    HorizontalAlignment="Center">
+                </GridSplitter>
+
+                <Border
+                    Grid.Column="2"
+                    Style="{StaticResource Border_GroupStyle}"
+                    MinWidth="300">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                                <Border
+                                    Grid.Row="0"
+                                    Height="30"
+                                    Style="{StaticResource Border_LineStyle}">
+                                        <TextBlock
+                                            Text="Время отъезда"
+                                            Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                                        </TextBlock>
+
+                                </Border>
+                        <ListBox
+                                    Name="listBoxTripShedules" 
+                                    Grid.Row="1"
+                                    Style="{StaticResource ListBox_ItemList_Style}"
+                                    ItemsSource="{Binding TripShedules, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    SelectionChanged="listBoxTripShedules_SelectionChanged"
+                                    ItemTemplate="{StaticResource ListBoxItem_TripSheduleSmall_Template}"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+
+                        <Border
+                            Grid.Row="2"
+                            Style="{StaticResource Border_GroupStyle}">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    Text="Дата рейса">
+                                </TextBlock>
+                                <uc:CustomDatePicker
+                                    x:Name="datePickerDepartureDate"
+                                    HorizontalAlignment="Right" SelectedDateChanged="datePickerDepartureDate_SelectedDateChanged_1">
+                                </uc:CustomDatePicker>
+                            </StackPanel>
+                            
+                        </Border>
+
+                            <!--<ScrollViewer
+                            Grid.Row="2"
+                            VerticalScrollBarVisibility="Disabled"
+                            HorizontalScrollBarVisibility="Auto">
+                            <Calendar
+                                
+                                IsTodayHighlighted="False"
+                                Name="calendarDepartureDate"
+                                DisplayMode="Month" 
+                                SelectedDate="{x:Static sys:DateTime.Now}"
+                                CalendarDayButtonStyle="{StaticResource CalendarButton_HighlightStyle}" 
+                                SelectedDatesChanged="calendarDepartureDate_SelectedDatesChanged">
+                            </Calendar>
+                        </ScrollViewer>-->
+                            
+                    </Grid>
+                        </Border>
+
+                    <GridSplitter 
+                        Grid.Column="3" 
+                        Width="3"
+                        VerticalAlignment="Stretch" 
+                        HorizontalAlignment="Center">
+                    </GridSplitter>
+
+                <Border
+                            Grid.Column="4"
+                            Style="{StaticResource Border_GroupStyle}">
+
+                            <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*" />
+                            <ColumnDefinition Width="430*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Border Height="30"
+                                    Style="{StaticResource Border_LineStyle}" Grid.ColumnSpan="2">
+
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                                <TextBlock
+                                    Text="Список мест  "
+                                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                                </TextBlock>
+
+                                <TextBlock
+                                    Text="Отправление :"
+                                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                                </TextBlock>
+
+                                <TextBlock
+                                    Text="{Binding ElementName=datePickerDepartureDate, Path=SelectedDate, Converter={StaticResource DateTimeFormatConverter}, ConverterParameter=dd.MM.yyyy}"
+                                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                                </TextBlock>
+                            </StackPanel>                               
+                        </Border>
+
+                        <extToolkit:BusyIndicator 
+                            x:Name="busyIndicator"
+                            BusyContent="Идет загрузка данных..."
+                            Grid.Row="1" 
+                            IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2">
+                            <DataGrid
+                                Grid.Row="1" 
+                                Name="dataGridSeats"
+                                ItemsSource="{Binding Seats, UpdateSourceTrigger=PropertyChanged}"
+                                IsReadOnly="True"
+                                RowStyle="{StaticResource DataGrid_SeatRow_Style}" 
+                                CellStyle="{StaticResource DataGrid_Cell_Style}" 
+                                MouseDoubleClick="dataGridSeats_MouseDoubleClick" 
+                                SelectionMode="Single">
+                                <DataGrid.ContextMenu >
+                                    <ContextMenu x:Name="seatContextMenu">
+                                        <MenuItem x:Name="seatSellMenuItem" Header="Продать место" Command="{Binding SeatSellCommand}" CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}" />
+                                        <MenuItem x:Name="seatReserveMenuItem" Header="Забронировать место" Command="{Binding SeatReserveCommand}" CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+                                        <MenuItem x:Name="seatUnReserveMenuItem" Header="Снять бронь" Command="{Binding SeatUnReserveCommand}" CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+                                        <MenuItem x:Name="seatReturnMenuItem" Header="Возврат билета" Command="{Binding SeatReturnCommand}" CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+                                        <!--<MenuItem x:Name="seatChangeMenuItem" Header="Обменять билет" Command="{Binding SeatChangeCommand}" CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}"/>-->
+                                        <Separator Margin="0,2,2,2" />
+                                        <MenuItem x:Name="seatUpdateMenuItem" Header="Обновить" 
+                                                  Click="ButtonSeatUpdate_Click" />
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn
+                                        Width="30"
+                                        Header="№"
+                                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <!--<Border
+                                                            Background="Transparent"
+                                                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}, AncestorLevel=1}, Path=ActualWidth}"
+                                                            Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}, AncestorLevel=1}, Path=ActualHeight}"
+                                                            MouseRightButtonDown="TextBlock_MouseRightButtonDown">-->
+                                                            <TextBlock
+                                                                Text="{Binding SeatNumber, Mode=OneWay}"
+                                                                Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                                            </TextBlock>
+                                                         <!--</Border>-->
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                            <DataGridTemplateColumn
+                                        Width="*"
+                                        Header="ФИО пассажира"
+                                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <!--<Border
+                                                            Background="Transparent"
+                                                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}, AncestorLevel=1}, Path=ActualWidth}"
+                                                            Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}, AncestorLevel=1}, Path=ActualHeight}"
+                                                            MouseRightButtonDown="TextBlock_MouseRightButtonDown">-->
+                                                            <TextBlock
+                                                                Text="{Binding PassengerFullName, Mode=OneWay}"
+                                                                Style="{StaticResource TextBlock_DataGridCell_Style}"
+                                                                TextTrimming="CharacterEllipsis">
+                                                            </TextBlock>
+                                                        <!--</Border>-->
+                                                    
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                            <DataGridTemplateColumn
+                                        Width="0.5*"
+                                        Header="Пункт отправления"
+                                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <!--<Border
+                                                            Background="Transparent"
+                                                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}, AncestorLevel=1}, Path=ActualWidth}"
+                                                            Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}, AncestorLevel=1}, Path=ActualHeight}"
+                                                            MouseRightButtonDown="TextBlock_MouseRightButtonDown">-->
+                                                                <TextBlock
+                                                                    Text="{Binding TownDeparture, Mode=OneWay}"
+                                                                    Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                                                </TextBlock>
+                                                            <!--</Border>-->
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                            <DataGridTemplateColumn
+                                        Width="0.5*"
+                                        Header="Пункт прибытия"
+                                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <!--<Border
+                                                            Background="Transparent"
+                                                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}, AncestorLevel=1}, Path=ActualWidth}"
+                                                            Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}, AncestorLevel=1}, Path=ActualHeight}"
+                                                            MouseRightButtonDown="TextBlock_MouseRightButtonDown">-->
+                                                            <TextBlock
+                                                                Text="{Binding TownArrival, Mode=OneWay}"
+                                                                Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                                            </TextBlock>
+                                                       <!--</Border>-->
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn
+                                        Width="0.3*"
+                                        Header="Цена"
+                                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    Text="{Binding PriceString, Mode=OneWay}"
+                                                    Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn
+                                        Width="0.6*"
+                                        Header="Оператор"
+                                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    Text="{Binding SellingOperatorString, Mode=OneWay}"
+                                                    Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn
+                                                Width="35"
+                                                HeaderTemplate="{StaticResource DataGrid_Header_Template}"
+                                                CellTemplate="{StaticResource SeatState_CellTemplate}">
+                                    </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                        </extToolkit:BusyIndicator>
+
+                        <Border
+                            Grid.Row="2" Grid.ColumnSpan="2">
+                            <Border.Style>
+                                <Style
+                                    TargetType="{x:Type Border}"
+                                    BasedOn="{StaticResource Border_GroupStyle}">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger 
+                                                Binding="{Binding ElementName=listBoxTripShedules, UpdateSourceTrigger=PropertyChanged, Path=SelectedItem}"
+                                                Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <StackPanel>
+                                <StackPanel
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="Автобус : ">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Text="{Binding ElementName=listBoxTripShedules, Path=SelectedItem.TS.Bus.DisplayName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource TextBlock_BoldDescription_Style}">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Text="Мест занято : ">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Text="{Binding SeatsTakenCount, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource TextBlock_BoldDescription_Style}">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Text="из"
+                                        Margin="2,0,0,0">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Text="{Binding ElementName=listBoxTripShedules, Path=SelectedItem.TS.Bus.PassengersCount, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource TextBlock_BoldDescription_Style}">
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <StackPanel
+                                    Orientation="Horizontal">
+                                    
+                                    <TextBlock
+                                        Text="Сумма проданных билетов: "
+                                        Margin="5,0,0,0">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Text="{Binding SeatsSoldSum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource TextBlock_BoldDescription_Style}">
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>                           
+                        </Border>
+
+                        <Grid
+                            Grid.Row="3"
+                            Height="40" Width="450"
+                            HorizontalAlignment="Left" Grid.ColumnSpan="2">
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Button
+                                Grid.Column="0"
+                                Content="Отп. автобус"
+                                Style="{StaticResource Button_SimpleBorder_Style}"
+                                Command="{Binding BusDepartureCommand, Mode=OneWay}"
+                                CommandParameter="{Binding ElementName=listBoxTripShedules, Path=SelectedItem}">
+                            </Button>
+
+                            <Button
+                                Grid.Column="1"
+                                Content="Ведомость"
+                                Style="{StaticResource Button_SimpleBorder_Style}"
+                                Command="{Binding reportVM.ReportStatementCommand, Mode=OneWay}">
+                                <Button.CommandParameter>
+                                <MultiBinding Converter="{StaticResource multiValuesConverter}">
+                                    <Binding ElementName="listBoxTripShedules" Path="SelectedItem" />
+                                    <Binding ElementName="datePickerDepartureDate" Path="SelectedDate" />
+                                </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
+
+                            <Button
+                                Grid.Column="2"
+                                Content="Изм. автобус"
+                                Style="{StaticResource Button_SimpleBorder_Style}"
+                                Command="{Binding ChangeBusCommand, Mode=OneWay}" >
+                                <Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource multiValuesConverter}">
+                                        <Binding ElementName="listBoxTripShedules" Path="SelectedItem" />
+                                        <Binding ElementName="datePickerDepartureDate" Path="SelectedDate" />
+                                    </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
+
+                            <Button
+                                Grid.Column="3"
+                                Content="Обновить"
+                                Style="{StaticResource Button_SimpleBorder_Style}"
+                                Click="ButtonSeatUpdate_Click">
+                            </Button>
+                        </Grid>
+                   </Grid>
+                </Border>
+
+            </Grid>
+            <!---->
+        </Border>
+            
+        <Grid
+            Margin="0,10,0,0"
+            Grid.Row="4"
+            Height="20"
+            Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="Состояние сервера : "
+                FontSize="11">
+            </TextBlock>
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding ServerState, UpdateSourceTrigger=PropertyChanged}" 
+                FontWeight="Bold"
+                Margin="0,0,10,0"
+                FontSize="11">
+            </TextBlock>
+            <TextBlock
+                Grid.Column="2"
+                Text="Состояние ККМ : "
+                FontSize="11">
+            </TextBlock>
+            <TextBlock
+                Grid.Column="3"
+                FontWeight="Bold"
+                Text="{Binding KKMState, UpdateSourceTrigger=PropertyChanged}"
+                FontSize="11">
+            </TextBlock>
+            <StackPanel
+                Grid.Column="4"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+                <TextBlock
+                    Text="Версия приложения :"
+                    FontSize="11">
+                 </TextBlock>
+                 <TextBlock
+                    FontWeight="Bold"
+                    Text="{Binding VersionState, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="11">
+                 </TextBlock>
+            </StackPanel>
+        </Grid>      
+    </Grid>
+</Window>

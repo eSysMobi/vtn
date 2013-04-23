@@ -1,0 +1,155 @@
+﻿<Page x:Class="Reports.Documents.ReportMonth"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Height="1122"
+      Width="794">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles\StylesAndTemplatesRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Border
+            Padding="20,30,40,0">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    Width="420"
+                    HorizontalAlignment="Center">
+                    <TextBlock
+                        Style="{StaticResource TextBlock_HeaderBoldStyle}"
+                        FontWeight="Bold"
+                        Text="Отчет по исполнению комиссионного поручения по договору комиссии №№03/18/19-2011 от 01 инюня 2011 г.">
+                    </TextBlock>
+                </Border>
+
+                <TextBlock
+                    Margin="0,20,0,0"
+                    Grid.Row="1"
+                    Style="{StaticResource TextBlock_NormalStyle}"
+                    FontSize="13"
+                    TextWrapping="WrapWithOverflow"
+                    Text="Борунов М.Л., именуемый в дальнейшем 'Исполнитель', в лице индивидуального предпринимателя, действующий на
+основании свидетельства серии 64 №2852614, выданного Международной ИНФС №10 по Саратовской области 
+29.10.2010 г., ОГРН: 310644430200011, ИНН: 522600022060, представляет а Индивидуаьлный предприниматель
+Баранова Валентина Александровна, именуемый в дальнейшем 'Перевозчик', в лице Баранова В.А., действующий
+на основании Свидетельства №002370067, ОГРН: 306645104000032 принимает настоящий отчет об исполнении
+поручения по договору комиссии (об организации и осуществлении пассажирских перевозок автомобильным 
+транспортом) №№03/18/19-2011 от 01 июня 2011 г.">
+                </TextBlock>
+
+                <TextBlock
+                    Margin="0,25,0,0"
+                    Grid.Row="2"
+                    Style="{StaticResource TextBlock_HeaderBoldStyle}"
+                    Text="Отчет за Январь 2012 г.">
+                </TextBlock>
+
+                <DataGrid
+                    Width="500"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource DataGrid_BaseStyle}"
+                    Name="dataGrid"
+                    Margin="0,15,0,0"
+                    Grid.Row="3">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="№ п/п"
+                            Width="60"
+                            HeaderStyle="{StaticResource DataGrid_WhiteHeaderBoldStyle}"
+                            Binding="{Binding Number}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Дата рейса"
+                            HeaderStyle="{StaticResource DataGrid_WhiteHeaderBoldStyle}"
+                            Width="*"
+                            Binding="{Binding Date}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="№ автобуса"
+                            HeaderStyle="{StaticResource DataGrid_WhiteHeaderBoldStyle}"
+                            Width="*"
+                            Binding="{Binding RegNumber}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Переданные согласно п.п. 2.1.2 денежные средства"
+                            HeaderStyle="{StaticResource DataGrid_WhiteHeaderBoldStyle}"
+                            Width="1.3*"
+                            Binding="{Binding Sum}">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <TextBlock
+                    Margin="4,2,0,0"
+                    Grid.Row="4"
+                    Text="Итого передано перевозчику денежных средств на сумму 2600.00 (Две тысячи шестьсот руб. 00 коп.)">
+                </TextBlock>
+
+                <TextBlock
+                    Margin="4,35,0,0"
+                    TextWrapping="WrapWithOverflow"
+                    Grid.Row="5"
+                    Text="За исполнение комиссионного поручения 31.01.12 Исполнитеьл удержал вознаграждение 2600.00 руб (Две тысячи
+шестьсот руб. 00 коп.) согласно п.п. 3.1. договора комиссии">
+                </TextBlock>
+
+                <Grid
+                    Margin="10,30,0,0"
+                    Grid.Row="6">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel
+                        Grid.Column="0">
+                        <TextBlock
+                            Text="От Исполнителя:">
+                        </TextBlock>
+
+                        <TextBlock
+                            Margin="0,10,0,0"
+                            Text="ИП                      Борунов М.Л.">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Column="1">
+                        <TextBlock
+                            Text="От Перевозчика:">
+                        </TextBlock>
+
+                        <TextBlock
+                            Margin="0,10,0,0"
+                            Text="ИП                                 Баранова В.А.">
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,831 @@
+﻿<Page x:Class="Reports.Documents.ReportCashOrder"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Height="1122"
+      Width="794">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles\StylesAndTemplatesRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Border
+            Padding="30,20,30,0">           
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel
+                    Grid.Row="0">
+
+                    <TextBlock 
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        Text="Автобус №"
+                        FontWeight="Bold"
+                        FontSize="12">
+                    </TextBlock>
+                    <TextBlock 
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        Text="Время отправления:   10:00"
+                        FontWeight="Bold"
+                        FontSize="12">
+                    </TextBlock>
+                </StackPanel>
+
+                <Grid
+                    Margin="0,10,0,0"
+                    Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Style="{StaticResource Border_LineStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource Border_LineStyle}"
+                        BorderThickness="1">
+
+                        <TextBlock
+                            Style="{StaticResource TextBlock_CenterTableStyle}"
+                            FontSize="14"
+                            Text="Код">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource Border_LineStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Style="{StaticResource Border_LineStyle}"
+                        BorderThickness="1">
+
+                        <TextBlock
+                            Style="{StaticResource TextBlock_CenterTableStyle}"
+                            FontSize="14"
+                            Text="0310002">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Style="{StaticResource Border_LineStyle}">
+
+                        <TextBlock
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            FontSize="14"
+                            Text="ИП Борунов М.Л.">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                        Text="организация">
+                    </TextBlock>
+
+                    <Border
+                        Height="13"
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Style="{StaticResource Border_LineStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Style="{StaticResource Border_CellStyle}"
+                        BorderThickness="1">
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                        Text="структурное подразделение">
+                    </TextBlock>
+                </Grid>
+
+                <Grid
+                    Grid.Row="2"
+                    Margin="0,20,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="270"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_BigBoldStyle}"
+                        Text="РАСХОДНЫЙ КАССОВЫЙ ОРДЕР  "
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                    </TextBlock>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="1">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            Padding="20,5"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Style="{StaticResource Border_CellStyle}">
+                            <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="Номер документа"
+                                TextWrapping="Wrap">
+                            </TextBlock>
+                        </Border>
+
+                        <Border
+                            Padding="20,10"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Style="{StaticResource Border_CellStyle}">
+                            <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="Дата составления"
+                                TextWrapping="Wrap">
+                            </TextBlock>
+                        </Border>
+
+                        <Border
+                            Padding="10,5"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Style="{StaticResource Border_CellStyle}">
+
+                            <TextBlock 
+                                    Style="{StaticResource TextBlock_CenterTableStyle}"
+                                    Text="2">
+                            </TextBlock>
+
+                        </Border>
+
+                        <Border
+                            Padding="10,5"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Style="{StaticResource Border_CellStyle}">
+
+                            <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="23.01.12">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <Grid
+                    Margin="0,15,0,0"
+                    Grid.Row="3">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Grid.Row="0"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="Дебет">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="код структурного подразделе-ния">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Column="2"
+                        Grid.Row="1"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="корреспон-дирующий счет, субсчет">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="2"
+                        Grid.Row="2"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Column="3"
+                        Grid.Row="1"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="код аналити-ческого учета">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="3"
+                        Grid.Row="2"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Column="4"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="Кредит">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="4"
+                        Grid.Row="2"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Column="5"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="Сумма">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="5"
+                        Grid.Row="2"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="1700.00">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="6"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="Код целевого назначения">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="6"
+                        Grid.Row="2"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock 
+                                Style="{StaticResource TextBlock_CenterTableStyle}"
+                                Text="1700.00">
+                        </TextBlock>
+                    </Border>
+
+                    <Border
+                        Grid.Column="7"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+
+                    <Border
+                        Grid.Column="7"
+                        Grid.Row="2"
+                        Style="{StaticResource Border_CellStyle}">
+                    </Border>
+                </Grid>
+
+                <Grid
+                    Margin="0,15,0,0"
+                    Grid.Row="4">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="0"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            Text="Выдать">
+                        </TextBlock>
+
+                        <Border
+                            Grid.Column="1"
+                            Style="{StaticResource Border_LineStyle}">
+
+                            <TextBlock 
+                                Style="{StaticResource TextBlock_NormalStyle}"
+                                Text="ИП Огородников Л.В. ч/з вод. Позоднеев Владимир Евграфович">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <TextBlock 
+                        Grid.Row="1"
+                        Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                        VerticalAlignment="Top"
+                        Text="фамилия, имя, отчество">
+                    </TextBlock>
+
+                    <Grid
+                        Grid.Row="2">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="0"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            Text="Основание">
+                        </TextBlock>
+
+                        <Border
+                            Grid.Column="1"
+                            Style="{StaticResource Border_LineStyle}">
+
+                            <TextBlock 
+                                Style="{StaticResource TextBlock_NormalStyle}"
+                                Text="договор">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <Grid
+                        Height="30"
+                        Grid.Row="4">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="0"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            Text="Сумма"
+                            VerticalAlignment="Bottom">
+                        </TextBlock>
+
+                        <Border
+                            Grid.Column="1"
+                            Style="{StaticResource Border_LineStyle}">
+
+                            <TextBlock 
+                                Style="{StaticResource TextBlock_NormalStyle}"
+                                VerticalAlignment="Bottom"
+                                Text="Одна тысяча семьсот руб. 00 коп.">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <TextBlock 
+                        Grid.Row="5"
+                        Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                        VerticalAlignment="Top"
+                        Text="прописью">
+                    </TextBlock>
+
+                    <Border
+                        Height="15"
+                        Grid.Row="6"
+                        Style="{StaticResource Border_LineStyle}">
+
+                    </Border>
+
+                    <Grid
+                        Height="30"
+                        Grid.Row="7">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="0"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            Text="Приложение"
+                            VerticalAlignment="Bottom">
+                        </TextBlock>
+
+                        <Border
+                            Grid.Column="1"
+                            Style="{StaticResource Border_LineStyle}">
+
+                            <TextBlock 
+                                 VerticalAlignment="Bottom"
+                                Style="{StaticResource TextBlock_NormalStyle}"
+                                Text="договор 123 от 15,01,12г.">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <Border
+                        Grid.Row="8"
+                        Height="30">
+                        <TextBlock
+                            VerticalAlignment="Bottom"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            TextWrapping="WrapWithOverflow"
+                            Text="Руководитель организации      _________________________      _______________________________    _____________________________">
+                        </TextBlock>
+
+                    </Border>
+
+
+                    <Grid 
+                        Grid.Row="9" 
+                        Height="13">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="1"
+                            Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                            Text="должность"
+                            VerticalAlignment="Top">
+                        </TextBlock>
+
+                        <TextBlock 
+                            Grid.Column="3"
+                            Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                            Text="подпись"
+                            VerticalAlignment="Top">
+                        </TextBlock>
+
+                        <TextBlock 
+                            Grid.Column="5"
+                            Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                            Text="расшифровка подписи"
+                            VerticalAlignment="Top">
+                        </TextBlock>
+                    </Grid>
+
+                    <TextBlock
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        TextWrapping="WrapWithOverflow"
+                        Grid.Row="10"
+                        Text="Главный бухгалтер                     _________________________      _______________________________    _____________________________">
+                    </TextBlock>
+
+                    <Grid 
+                        Grid.Row="11" 
+                        Height="13">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="1"
+                            Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                            Text="должность"
+                            VerticalAlignment="Top">
+                        </TextBlock>
+
+                        <TextBlock 
+                            Grid.Column="3"
+                            Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                            Text="подпись"
+                            VerticalAlignment="Top">
+                        </TextBlock>
+
+                        <TextBlock 
+                            Grid.Column="5"
+                            Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                            Text="расшифровка подписи"
+                            VerticalAlignment="Top">
+                        </TextBlock>
+                    </Grid>
+
+                    <TextBlock
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        TextWrapping="WrapWithOverflow"
+                        Grid.Row="12"
+                        Text="Получил      ________________________________________________________________________________________________________________">
+                    </TextBlock>
+
+                    <Border
+                        Grid.Row="13"
+                        Height="30">
+                        <TextBlock
+                            VerticalAlignment="Bottom"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            TextWrapping="WrapWithOverflow"
+                            Text="_____________________________________________________________________________________________________ руб ____________ коп.">
+                        </TextBlock>
+                    </Border>
+
+                    <Grid 
+                        Grid.Row="14"
+                        Height="30">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="70"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Border
+                            Grid.Column="0"
+                            Style="{StaticResource Border_LineStyle}">
+
+                            <TextBlock 
+                                Style="{StaticResource TextBlock_NormalStyle}"
+                                Text="23 января 2012г."
+                                VerticalAlignment="Bottom">
+                            </TextBlock>
+                        </Border>
+
+                        <TextBlock 
+                            Grid.Column="2"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            Text="Подпись"
+                            VerticalAlignment="Bottom">
+                        </TextBlock>
+
+                        <Border
+                            Grid.Column="3"
+                            Style="{StaticResource Border_LineStyle}">
+                        </Border>
+                    </Grid>
+
+                    <Grid 
+                        Grid.Row="15"
+                        Height="30">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="0"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            Text="По"
+                            VerticalAlignment="Bottom">
+                        </TextBlock>
+
+                        <Border
+                            Grid.Column="1"
+                            Style="{StaticResource Border_LineStyle}">
+
+                            <TextBlock 
+                                Grid.Column="0"
+                                Style="{StaticResource TextBlock_NormalStyle}"
+                                Text="паспорт 9876 123456 Красноармейским ГРОВД Сар. обл. от 19.12.2003"
+                                VerticalAlignment="Bottom">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <TextBlock 
+                        Grid.Row="16"
+                        Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                        Text="наименование, номер, дата и место выдачи документа"
+                        VerticalAlignment="Top">
+                    </TextBlock>
+
+                    <Border
+                        Height="15"
+                        Grid.Row="17"
+                        Style="{StaticResource Border_LineStyle}">
+                    </Border>
+
+                    <TextBlock 
+                        Grid.Row="18"
+                        Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                        Text="удостоверяющего личность получателя"
+                        VerticalAlignment="Top">
+                    </TextBlock>
+
+                    <Grid 
+                        Grid.Row="19"
+                        Height="30">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"></ColumnDefinition>
+                            <ColumnDefinition Width="130"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="140"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="0"
+                            Style="{StaticResource TextBlock_NormalStyle}"
+                            Text="Выдал кассир"
+                            VerticalAlignment="Bottom">
+                        </TextBlock>
+
+                        <Border
+                            Grid.Column="1"
+                            Style="{StaticResource Border_LineStyle}">
+                        </Border>
+
+                        <Border
+                            Grid.Column="3"
+                            Style="{StaticResource Border_LineStyle}">
+
+                            <TextBlock 
+                                Style="{StaticResource TextBlock_NormalStyle}"
+                                Text="Меньшиков ИИ"
+                                VerticalAlignment="Bottom">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <Grid 
+                        Grid.Row="20">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"></ColumnDefinition>
+                            <ColumnDefinition Width="130"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="130"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Grid.Column="1"
+                            Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                            Text="подпись"
+                            VerticalAlignment="Top">
+                        </TextBlock>
+
+                        <TextBlock 
+                            Grid.Column="3"
+                            Style="{StaticResource TextBlock_SmallCenterTableStyle}"
+                            Text="расшифровка подписи"
+                            VerticalAlignment="Top">
+                        </TextBlock>
+                    </Grid>
+
+                </Grid>
+            </Grid>            
+        </Border>
+    </Grid>
+</Page>

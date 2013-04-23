@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D56C34BF-3A95-4B4E-A2CB-27A72B917FF9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VlastelinClient</RootNamespace>
+    <AssemblyName>VlastelinClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>ftp://office24.pro/web/vlastelin-client/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://office24.pro/vlastelin-client/</InstallUrl>
+    <TargetCulture>ru-RU</TargetCulture>
+    <ProductName>Vlastelin Client</ProductName>
+    <PublisherName>Macr0s</PublisherName>
+    <SuiteName>Macr0s</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>39</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>613A484FFC3DBFF4A19491E798E6BF5FDCE865C7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>VlastelinClient_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\lib\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Reports\Classes\DocumentHelper.cs" />
+    <Compile Include="Reports\Classes\ReportsExecutor.cs" />
+    <Compile Include="Reports\Classes\ReportTables.cs" />
+    <Compile Include="Reports\Documents\ReportSalesAnalysis.xaml.cs">
+      <DependentUpon>ReportSalesAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Documents\ReportCashOrder.xaml.cs">
+      <DependentUpon>ReportCashOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Documents\ReportIncomeCashOrder.xaml.cs">
+      <DependentUpon>ReportIncomeCashOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Documents\ReportCashierBill.xaml.cs">
+      <DependentUpon>ReportCashierBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Documents\ReportReturnAct.xaml.cs">
+      <DependentUpon>ReportReturnAct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Documents\ReportMonth.xaml.cs">
+      <DependentUpon>ReportMonth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Documents\ReportPassengerTrips.xaml.cs">
+      <DependentUpon>ReportPassengerTrips.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Documents\ReportRKO.xaml.cs">
+      <DependentUpon>ReportRKO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Documents\ReportStatement.xaml.cs">
+      <DependentUpon>ReportStatement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Windows\ReportWindow.xaml.cs">
+      <DependentUpon>ReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="UserControls\AnimatedImage.cs" />
+    <Compile Include="UserControls\ClearingTextBox.xaml.cs">
+      <DependentUpon>ClearingTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CustomDatePicker.cs" />
+    <Compile Include="UserControls\MaskedTextBox.cs" />
+    <Compile Include="UserControls\PasswordBoxAssistant.cs" />
+    <Compile Include="Util\ClientMsg.cs" />
+    <Compile Include="Util\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Util\Converters\DateTimeFormatConverter.cs" />
+    <Compile Include="Util\Converters\RowColumnToCellConverter.cs" />
+    <Compile Include="Util\Converters\MultiValuesConverter.cs" />
+    <Compile Include="Util\Converters\TripsAvailableToColorConverter.cs" />
+    <Compile Include="Util\DispatcherService.cs" />
+    <Compile Include="Util\ExportUtil.cs" />
+    <Compile Include="Util\KKMManager.cs" />
+    <Compile Include="Util\NumbersManager.cs" />
+    <Compile Include="Util\StateManager.cs" />
+    <Compile Include="Util\TimerManager.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\StationScheduleVM.cs" />
+    <Compile Include="ViewModel\Support\FuncExec.cs" />
+    <Compile Include="Util\LoginManager.cs" />
+    <Compile Include="Util\ConfiguratonSettings.cs" />
+    <Compile Include="ViewModel\Support\TownTimePair.cs" />
+    <Compile Include="ViewModel\Support\UtilManager.cs" />
+    <Compile Include="Util\WindowsMessageBox.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\DriverAuthorityVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\FIOItemVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\OperatorVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\PassengerVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\TripPriceVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\BaseWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\BranchWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\BusDepWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\BusWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\ChangeBusWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\ChangeTicketWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\DeparturedBusesWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\DriverWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\ListRKOWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\MainWindowVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\BaseItemVMcs.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\BranchVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\BusVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\DriverVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\OwnerVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\SeatVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\TownVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\TripSheduleVM.cs" />
+    <Compile Include="ViewModel\ObjectsViewModel\TripVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\OperatorWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\OwnerWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\PassengersListWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\PassengerWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\ReportVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\SeatTableVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\TownWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\TripSheduleWindowVM.cs" />
+    <Compile Include="ViewModel\WindowsViewModel\TripWindowVM.cs" />
+    <Compile Include="Windows\BusDepartureWindow.xaml.cs">
+      <DependentUpon>BusDepartureWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\KKMSettingsWindow.xaml.cs">
+      <DependentUpon>WindowKKMSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SplashWindow.xaml.cs">
+      <DependentUpon>SplashWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowAbout.xaml.cs">
+      <DependentUpon>WindowAbout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowAdditionalServices.xaml.cs">
+      <DependentUpon>WindowAdditionalServices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowBranches.xaml.cs">
+      <DependentUpon>WindowBranches.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowBusesNew.xaml.cs">
+      <DependentUpon>WindowBusesNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowBase.cs" />
+    <Compile Include="Windows\WindowChangeBus.xaml.cs">
+      <DependentUpon>WindowChangeBus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowChangeTicket.xaml.cs">
+      <DependentUpon>WindowChangeTicket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowDateInterval.xaml.cs">
+      <DependentUpon>WindowDateInterval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowCriteriaReportAnalysis.xaml.cs">
+      <DependentUpon>WindowCriteriaReportAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowDeparturedBuses.xaml.cs">
+      <DependentUpon>WindowDeparturedBuses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowDepositMoney.xaml.cs">
+      <DependentUpon>WindowDepositMoney.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowDriver.xaml.cs">
+      <DependentUpon>WindowDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowEnterMessage.xaml.cs">
+      <DependentUpon>WindowEnterMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowOperators.xaml.cs">
+      <DependentUpon>WindowOperators.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowOwners.xaml.cs">
+      <DependentUpon>WindowOwners.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowPassenger.xaml.cs">
+      <DependentUpon>WindowPassenger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowPassengerList.xaml.cs">
+      <DependentUpon>WindowPassengerList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowPercentValue.xaml.cs">
+      <DependentUpon>WindowPercentValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowRKO.xaml.cs">
+      <DependentUpon>WindowRKO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowServerSettings.xaml.cs">
+      <DependentUpon>WindowServerSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowTowns.xaml.cs">
+      <DependentUpon>WindowTowns.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowTrips.xaml.cs">
+      <DependentUpon>WindowTrips.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowTripShedules.xaml.cs">
+      <DependentUpon>WindowTripShedules.xaml</DependentUpon>
+    </Compile>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Documents\ReportSalesAnalysis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Documents\ReportCashOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Documents\ReportIncomeCashOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Documents\ReportCashierBill.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Documents\ReportReturnAct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Documents\ReportMonth.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Documents\ReportPassengerTrips.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Documents\ReportRKO.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Documents\ReportStatement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Styles\StylesAndTemplatesRD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Windows\ReportWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\BorderRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ButtonRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ColorsAndBrushesRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\ComboBoxRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CommonRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGridRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DateTimeRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListBoxRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\OtherRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ContainerRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBlockRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBoxRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\WindowRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ClearingTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\BusDepartureWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowAdditionalServices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowChangeBus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowChangeTicket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowDateInterval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowCriteriaReportAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowDeparturedBuses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowDepositMoney.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowEnterMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowKKMSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SplashWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowBranches.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowBusesNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowOperators.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowOwners.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowPassenger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowPassengerList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowPercentValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowRKO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowServerSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowTowns.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowTrips.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowTripShedules.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Branch.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Bus.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.DocNumeration.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Driver.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.ExportedData.ExportedRKO.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.MainSettings.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Operator.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Owner.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Passenger.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.PKO.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Receipt.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.RKO.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.SalesHistory.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.SalesKind.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Seat.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.StationOrder.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.StationSchedule.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.SubTrip.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Town.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.Trip.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.TripPrice.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.TripSchedule.datasource" />
+    <None Include="Properties\DataSources\Vlastelin.Data.Model.TripScheduleFact.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\ServiceReference1\service.wsdl" />
+    <None Include="Service References\ServiceReference1\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\service2.wsdl" />
+    <None Include="Service References\ServiceReference1\System.Data1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\System.Data11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\System1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\System11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Vlastelin.Common1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Vlastelin.Common11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Vlastelin.Data.Model.ExportedData.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Vlastelin.Data.Model.ExportedData1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Vlastelin.Data.Model.ExportedData2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Vlastelin.Data.Model1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Vlastelin.Data.Model11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\VlastelinServer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\VlastelinServer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\vlastelinService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\vlastelinService1.wsdl" />
+    <None Include="Service References\ServiceReference1\vlastelinService11.wsdl" />
+    <None Include="Service References\ServiceReference1\vlastelinService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="svcutil_update.cmd" />
+    <None Include="VlastelinClient_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vlastelin.Common\Vlastelin.Common.csproj">
+      <Project>{998076D4-4EED-4DA9-A03D-E072B9F30B67}</Project>
+      <Name>Vlastelin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vlastelin.Data.Model\Vlastelin.Data.Model.csproj">
+      <Project>{679DB35A-02D6-46F1-B537-846B6A7F0B40}</Project>
+      <Name>Vlastelin.Data.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vlastelin.KKM\Vlastelin.KKM.csproj">
+      <Project>{9505E703-F524-45F8-81C0-3E904D8DB59C}</Project>
+      <Name>Vlastelin.KKM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DeleteItemButtonImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SaveItemButtonImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NewItemButtonImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SelectedItemImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\UpdateButtonImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ExitButtonImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LockedSeatImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SoldSeatImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\splash_loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\iconToday.png" />
+    <Content Include="xslt\RKOExport.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <Resource Include="logo.ico" />
+    <Resource Include="Images\Icons\logo.ico" />
+    <Resource Include="Images\Icons\CatalogsIcon.png" />
+    <Resource Include="Images\Icons\SettingsIcon.png" />
+    <Resource Include="Images\ArrowDown.png" />
+    <Resource Include="Images\ArrowUp.png" />
+    <Resource Include="Images\Toolbar\salesReportIcon.png" />
+    <Resource Include="Images\Toolbar\serverSettingsIcon.png" />
+    <Resource Include="Images\Toolbar\additionalServicesIcon.png" />
+    <Resource Include="Images\Toolbar\busDepartureIcon.png" />
+    <Resource Include="Images\Toolbar\depositMoneyIcon.png" />
+    <Resource Include="Images\ReservedSeatImage.png" />
+    <Resource Include="Images\Icons\BusIcon.png" />
+    <Resource Include="Images\Toolbar\saveCellIcon.png" />
+    <Resource Include="Images\Toolbar\toiletIcon.png" />
+    <Resource Include="Images\PlusItemButtonImage.png" />
+    <Content Include="Images\vlastelinLogo.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

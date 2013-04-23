@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="VlastelinClient.UserControls.ClearingTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <Grid>
+        <Border
+			Name="textBoxFilterBorder"
+            Height="{StaticResource TextElement_Default_Height}"
+            BorderBrush="Black"
+            BorderThickness="1">
+
+            <DockPanel
+                LastChildFill="True">
+
+                <Image 
+                    DockPanel.Dock="Right"
+                    Name="imageDeleteItemButton"
+                    Source="../Images/DeleteItemButtonImage.png"
+                    Style="{StaticResource Image_DeleteFilterText_Style}" 
+                    MouseDown="imageDeleteItemButton_MouseDown">
+                </Image>
+
+                <TextBox
+                    Name="textBoxFilter"
+                    Style="{StaticResource TextBox_Normal_Style}"
+                    BorderThickness="0"
+                    Padding="2"
+                    Margin="1,1,5,1" 
+                    TextChanged="textBoxFilter_TextChanged">
+                </TextBox>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

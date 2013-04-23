@@ -1,0 +1,521 @@
+﻿<local:WindowBase x:Class="VlastelinClient.WindowOperators"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:uc="clr-namespace:VlastelinClient.UserControls"
+        xmlns:extToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended"
+        xmlns:local="clr-namespace:VlastelinClient"
+        xml:lang="ru-RU"
+        Title="Операторы" 
+        Icon="..\Images\Icons\CatalogsIcon.png"
+        Height="600" 
+        Width="800"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Loaded="WindowBase_Loaded">
+
+    <extToolkit:BusyIndicator IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged}" BusyContent="Идет загрузка...">
+
+        <Grid
+            Margin="{StaticResource Margin_Border_Outside}"
+            Background="{StaticResource White_ColorBrush}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--<Border
+                Grid.Row="0"
+                Margin ="0"
+                Style="{StaticResource Border_GroupStyle}">-->
+            <Border 
+                Grid.Row="0"
+                Height="5">
+            </Border>
+
+            <Border 
+                Grid.Row="1"
+                Style="{StaticResource Border_SearchArea_Style}">
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Height="20"
+                        Style="{StaticResource Border_LineStyle}">
+
+                        <TextBlock
+                            Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                            Text="Поиск"
+                            HorizontalAlignment="Left">
+                        </TextBlock>
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Имя"
+                        Style="{StaticResource TextBlock_FilterDescription_Style}">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="Фамилия"
+                        Style="{StaticResource TextBlock_FilterDescription_Style}">
+                    </TextBlock>
+
+                    <uc:ClearingTextBox
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        x:Name="textBoxFilterName"
+                        Margin="{StaticResource Margin_TextBox_Filter}"
+                        FilterTextChanged="Filter_TextChanged">
+                    </uc:ClearingTextBox>
+
+                    <uc:ClearingTextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        x:Name="textBoxFilterSurname"
+                        Margin="{StaticResource Margin_TextBox_Filter}"
+                        FilterTextChanged="Filter_TextChanged">
+                    </uc:ClearingTextBox>
+                </Grid>
+            </Border>
+            
+            <Grid
+                Grid.Row="2">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <ListBox
+                    Style="{StaticResource ListBox_ItemList_Style}"
+                    Name="listBoxOperators"
+                    ItemsSource="{Binding Operators}"
+                    ItemTemplate="{StaticResource ListBoxItem_NameSurname_Template}" 
+                    Loaded="listBoxOperators_Loaded">
+                </ListBox>
+
+                <Grid
+                    Grid.Column="1"
+                    DataContext="{Binding ElementName=listBoxOperators, Path=SelectedItem}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <TabControl
+                        Grid.Row="0">
+                    
+                        <TabItem
+                            Header="Информация">
+                            <Border
+                                Name="Border"
+                                Style="{StaticResource Border_GroupStyle}">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid
+                                        Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel
+                                            Orientation="Horizontal"
+                                            Grid.Column="0">
+                                            <TextBlock
+                                                Text="Фамилия">
+                                            </TextBlock>
+                                            <TextBlock
+                                                Text="*"
+                                                Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel
+                                            Orientation="Horizontal"
+                                            Grid.Column="2">
+                                            <TextBlock
+                                                Text="Имя">
+                                            </TextBlock>
+                                            <TextBlock
+                                                Text="*"
+                                                Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel
+                                            Orientation="Horizontal"
+                                            Grid.Column="4">
+                                            <TextBlock
+                                                Text="Отчество">
+                                            </TextBlock>
+                                            <TextBlock
+                                                Text="*"
+                                                Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                        <TextBox
+                                            Grid.Column="1"
+                                            Name="textBoxSurName"
+                                            Text="{Binding Surname, Mode=OneWay}">
+                                        </TextBox>
+
+                                        <TextBox
+                                            Grid.Column="3"
+                                            Name="textBoxName"
+                                            Text="{Binding Name, Mode=OneWay}">
+                                        </TextBox>
+
+                                        <TextBox
+                                            Grid.Column="5"
+                                            Name="textBoxPatronymic"
+                                            Text="{Binding Patronymic, Mode=OneWay}">
+                                        </TextBox>
+                                    </Grid>
+
+                                    <Border
+                                        Style="{StaticResource Border_AddInfoStyle}"
+                                        Grid.Row="1">
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                                <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Orientation="Horizontal"
+                                                Margin="{StaticResource Margin_Standart_Bottom}">
+                                                <TextBlock
+                                                    Style="{StaticResource TextBlock_BoldDescription_Style}"
+                                                    Text="Филиал"
+                                                    Margin="0">
+                                                </TextBlock>
+                                                <TextBlock
+                                                    Text="*"
+                                                    Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                                </TextBlock>
+                                            </StackPanel>
+
+                                            <TextBlock
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Text="Город"
+                                                Margin="{StaticResource Margin_Standart_Bottom}">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Grid.Column="0"
+                                                Text="Адрес"
+                                                Margin="{StaticResource Margin_Standart_Bottom}">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Row="3"
+                                                Grid.Column="0"
+                                                Text="Телефон"
+                                                Margin="0">
+                                            </TextBlock>
+
+                                            <ComboBox
+                                                Name="comboBoxBranch"
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Branches}"
+                                                DisplayMemberPath="Name"
+                                                Margin="{StaticResource Margin_Standart_Bottom}" 
+                                                SelectedItem="{Binding Branch, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                                            </ComboBox>
+
+                                            <TextBlock
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Text="{Binding ElementName=comboBoxBranch, Path=SelectedItem.Town.Name, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                                Margin="{StaticResource Margin_Standart_Bottom}">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Grid.Column="1"
+                                                Text="{Binding ElementName=comboBoxBranch, Path=SelectedItem.Address, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                                Margin="{StaticResource Margin_Standart_Bottom}">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Row="3"
+                                                Grid.Column="1"
+                                                Text="{Binding ElementName=comboBoxBranch, Path=SelectedItem.Phone, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                                Margin="0">
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </TabItem>
+                    
+                        <TabItem
+                            Header="Пользователь">
+                            <Border
+                                Style="{StaticResource Border_GroupStyle}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="Роль"
+                                        Height="{StaticResource TextElement_Default_Height}">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        Text="Логин">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Grid.Row="2"
+                                        Text="Пароль">
+                                    </TextBlock>
+
+                                    <ComboBox
+                                        Name="comboBoxRoles"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        SelectedItem="{Binding RoleString, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.RolesList}" 
+                                        Width="200"
+                                        HorizontalAlignment="Left">
+                                    </ComboBox>
+
+                                    <TextBox
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        Name="textBoxLogin"
+                                        Text="{Binding Login, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        MinWidth="200"
+                                        HorizontalAlignment="Left">
+                                        <TextBox.Style>
+                                            <Style
+                                                TargetType="{x:Type TextBox}"
+                                                BasedOn="{StaticResource TextBox_BaseStyle}">
+                                                <Setter Property="IsReadOnly" Value="True"></Setter>
+                                                
+                                                <Style.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding ElementName=listBoxOperators, Path=SelectedItem}"
+                                                        Value="{x:Null}">
+                                                        <Setter Property="IsReadOnly" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+
+                                        </TextBox.Style>
+                                    </TextBox>
+                            
+                                    <PasswordBox
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Name="passwordBoxPassword"
+                                        uc:PasswordBoxAssistant.BindPassword="True"
+                                        uc:PasswordBoxAssistant.BoundPassword="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        MinWidth="200"
+                                        HorizontalAlignment="Left">
+                                    </PasswordBox>
+
+                                    <Border Grid.ColumnSpan="3"
+                                        Grid.Row="3"
+                                        Margin="0,20,0,0"
+                                        Style="{StaticResource Border_GroupStyle}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Grid.Row="0"
+                                                Text="Дата последнего изменения пароля : ">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Grid.Row="1"
+                                                Text="Дата последней активности :">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Grid.Row="2"
+                                                Text="Дата последнего входа в систему : ">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Grid.Row="3"
+                                                Text="Дата создания аккаунта :">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Grid.Row="0"
+                                                Text="{Binding LastPasswordChangeDate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateTimeFormatConverter}, ConverterParameter=dd.MM.yyyy HH:mm:ss}">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Grid.Row="1"
+                                                Text="{Binding LastActivityDate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateTimeFormatConverter}, ConverterParameter=dd.MM.yyyy HH:mm:ss}">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Grid.Row="2"
+                                                Text="{Binding LastLoginDate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateTimeFormatConverter}, ConverterParameter=dd.MM.yyyy HH:mm:ss}">
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Grid.Row="3"
+                                                Text="{Binding CreationDate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateTimeFormatConverter}, ConverterParameter=dd.MM.yyyy HH:mm:ss}">
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </TabItem>
+                    </TabControl>
+
+                    <DockPanel
+                        Grid.Row="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+
+                        <StackPanel
+                            DockPanel.Dock="Right"
+                            Orientation="Horizontal">
+
+                            <Button
+                                Style="{StaticResource Button_Normal_SaveItemStyle}"
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.EditItemCommand}">
+                                <Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource multiValuesConverter}">
+                                        <Binding />
+                                        <Binding ElementName="textBoxName" Path="Text" />
+                                        <Binding ElementName="textBoxSurName" Path="Text" />
+                                        <Binding ElementName="textBoxPatronymic" Path="Text" />
+                                        <Binding ElementName="comboBoxBranch" Path="SelectedItem" />
+                                        <Binding ElementName="textBoxLogin" Path="Text" />
+                                        <Binding ElementName="comboBoxRoles" Path="SelectedItem" />
+                                    </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
+                            <Button
+                                Style="{StaticResource Button_Normal_DeleteItemStyle}"
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DeleteItemCommand}"
+                                CommandParameter="{Binding ElementName=listBoxOperators, Path=SelectedItem}">
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+                </Grid>
+
+            </Grid>
+
+            <Border
+                Margin ="0"
+                Style="{StaticResource Border_GroupStyle}"
+                Grid.Row ="3">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Grid.Column="0"
+                        Content="Обновить"
+                        Style="{StaticResource Button_Normal_UpdateStyle}"
+                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.UpdateCommand}"
+                        >
+                    </Button>
+                    <Button
+                        Grid.Column="1"
+                        Content="Создать"
+                        Style="{StaticResource Button_NewItem_Style}"
+                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.AddItemCommand}"
+                        CommandParameter="{Binding ElementName=listBoxOperators}">
+                    </Button>
+                    <Button
+                        Grid.Column="2"
+                        Content="Выйти"
+                        Style="{StaticResource Button_Exit_Style}" 
+                        Click="ButtonExit_Click">
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+    </extToolkit:BusyIndicator>
+</local:WindowBase>

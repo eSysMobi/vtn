@@ -1,0 +1,189 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+<ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="CommonRD.xaml"/>
+</ResourceDictionary.MergedDictionaries>
+
+    <!-- TEXTBLOCK -->
+
+    <Style
+		x:Key="TextBlock_BaseStyle"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource BaseStyle}">
+        <Setter
+			Property="Margin"
+			Value="{StaticResource Margin_Default}" />
+        <Setter
+			Property="VerticalAlignment"
+			Value="Center" />
+        <Setter
+			Property="HorizontalAlignment"
+			Value="Left" />
+        <Setter
+			Property="Foreground"
+			Value="{StaticResource TextBlock_Description_Brush}" />
+        <Setter
+			Property="FontSize"
+			Value="{StaticResource TextElement_Default_FontSize}" />
+        <Setter
+			Property="TextWrapping"
+			Value="Wrap" />
+
+        <Style.Triggers>
+            <Trigger
+				Property="IsEnabled"
+				Value="False">
+                <Setter
+					Property="Opacity"
+					Value="0.75" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_Trimming_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_BaseStyle}">
+
+        <Setter
+			Property="TextWrapping"
+			Value="NoWrap" />
+        <Setter
+			Property="TextTrimming"
+			Value="CharacterEllipsis" />
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="{x:Type TextBlock}"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_BaseStyle}">
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_FilterDescription_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_BaseStyle}">
+
+        <Setter
+			Property="Margin"
+			Value="{StaticResource Margin_TextBlock_Filter}" />
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_SmallDescription_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_BaseStyle}">
+
+        <Setter
+			Property="FontSize"
+			Value="{StaticResource TextElement_Small_FontSize}" />
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_SmallWhiteHeader_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_SmallDescription_Style}">
+
+        <Setter
+			Property="Foreground"
+			Value="{StaticResource White_ColorBrush}" />
+        <Setter
+			Property="HorizontalAlignment"
+			Value="Center" />
+        <Setter
+            Property="FontWeight"
+            Value="Bold">
+        </Setter>
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_BoldDescription_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_BaseStyle}">
+
+        <Setter
+            Property="FontWeight"
+            Value="Bold">
+        </Setter>
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_ListItem_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_Trimming_Style}">
+
+        <Setter
+			Property="HorizontalAlignment"
+			Value="Stretch" />
+        <Setter
+			Property="MaxWidth"
+			Value="100" />
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_ListItemSmall_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_ListItem_Style}">
+
+        <Setter
+			Property="FontSize"
+			Value="{StaticResource TextElement_Small_FontSize}" />
+        <Setter
+			Property="MaxWidth"
+			Value="130" />
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_DataGridCell_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_Trimming_Style}">
+
+        <Setter
+			Property="Foreground"
+			Value="{StaticResource TextBlock_Description_Brush}" />
+        <Setter
+            Property="Margin"
+            Value="3,1">
+        </Setter>
+        <Setter
+            Property="FontSize"
+            Value="{StaticResource TextElement_Small_FontSize}">
+        </Setter>
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+		x:Key="TextBlock_RedAsterisk_Style"
+		TargetType="{x:Type TextBlock}"
+		BasedOn="{StaticResource TextBlock_BaseStyle}">
+
+        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="Margin" Value="0"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+    </Style>
+
+    <!-- / TEXTBLOCK -->
+
+</ResourceDictionary>

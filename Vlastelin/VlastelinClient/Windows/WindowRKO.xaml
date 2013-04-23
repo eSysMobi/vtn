@@ -1,0 +1,100 @@
+﻿<local:WindowBase x:Class="VlastelinClient.Windows.WindowRKO"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:VlastelinClient"
+        Title="Список РКО" 
+        xml:lang="ru-RU" 
+        Height="500" 
+        Width="600"
+        ResizeMode="NoResize"
+        Icon="..\Images\Icons\CatalogsIcon.png"
+        WindowStartupLocation="CenterScreen" Loaded="WindowBase_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <DataGrid
+            Grid.Row="0" 
+            Name="dataGridRKO"
+            ItemsSource="{Binding ReportTable}"
+            CellStyle="{StaticResource DataGrid_Cell_Style}" 
+            RowStyle="{StaticResource DataGrid_Row_Style}"
+            SelectionMode="Single" MouseDoubleClick="dataGridRKO_MouseDoubleClick">
+            <DataGrid.ContextMenu >
+                <ContextMenu x:Name="busContextMenu">
+                    <MenuItem x:Name="printMenuItem" Header="Печать" Command="{Binding PrintCommand}" CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn
+                    Width="*"
+                    Header="РКО"
+                    HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                TextTrimming="CharacterEllipsis"
+                                Text="{Binding РКО, Mode=OneWay}"
+                                Style="{StaticResource TextBlock_DataGridCell_Style}">
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Width="0.5*"
+                    Header="Оператор"
+                    HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                TextTrimming="CharacterEllipsis"
+                                Text="{Binding Operator, Mode=OneWay}"
+                                Style="{StaticResource TextBlock_DataGridCell_Style}">
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Width="80"
+                    Header="Сумма"
+                    HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding Сумма, Mode=OneWay}"
+                                Style="{StaticResource TextBlock_DataGridCell_Style}">
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid
+            Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="0"
+                Content="Печатать"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Command="{Binding PrintCommand}"
+                CommandParameter="{Binding ElementName=dataGridRKO, Path=SelectedItem}">
+            </Button>
+
+            <Button
+                Grid.Column="1"
+                Content="Выход"
+                Style="{StaticResource Button_RoundCorner_Style}" Click="Button_Click">
+            </Button>
+        </Grid>
+    </Grid>
+</local:WindowBase>

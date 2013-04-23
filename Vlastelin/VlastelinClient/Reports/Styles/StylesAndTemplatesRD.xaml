@@ -1,0 +1,195 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="TextBlock_SmallStyle"
+               TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="10"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style x:Key="{x:Type TextBlock}"
+           TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+    </Style>
+
+    <Style x:Key="TextBlock_NormalStyle"
+               TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+    </Style>
+
+    <Style x:Key="TextBlock_RightStyle"
+               TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="11"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+    </Style>
+
+    <Style x:Key="TextBlock_CenterTableStyle"
+               TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style x:Key="TextBlock_SmallCenterTableStyle"
+           TargetType="{x:Type TextBlock}"
+           BasedOn="{StaticResource TextBlock_CenterTableStyle}">
+
+        <Setter Property="FontSize" Value="8"></Setter>
+
+    </Style>
+
+    <Style x:Key="TextBlock_BigBoldStyle"
+           TargetType="{x:Type TextBlock}"
+           BasedOn="{StaticResource TextBlock_CenterTableStyle}">
+
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+
+    </Style>
+
+    <Style x:Key="TextBlock_HeaderBoldStyle"
+           TargetType="{x:Type TextBlock}"
+           BasedOn="{StaticResource TextBlock_CenterTableStyle}">
+
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+
+    </Style>
+
+    <Style
+		x:Key="TextBlock_ReportCellStyle"
+		TargetType="{x:Type TextBlock}">
+
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="3,1" />
+    </Style>
+
+
+    <Style x:Key="Border_CellStyle"
+               TargetType="{x:Type Border}">
+
+        <Setter Property="BorderThickness" Value="1,0.5,1,0.5"></Setter>
+        <Setter Property="Margin" Value="0"></Setter>
+        <Setter Property="BorderBrush" Value="Black"></Setter>
+    </Style>
+
+    <Style x:Key="Border_LineStyle"
+               TargetType="{x:Type Border}">
+
+        <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+        <Setter Property="Margin" Value="0"></Setter>
+        <Setter Property="BorderBrush" Value="Black"></Setter>
+    </Style>
+
+    <Style x:Key="TextBlock_BaseStyle"
+               TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Margin" Value="4,2"></Setter>
+    </Style>
+
+    <Style x:Key="DataGrid_HeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Style.Resources>
+            <Style x:Key="TextBlock_HeaderStyle"
+               TargetType="{x:Type TextBlock}">
+
+                <Setter Property="Margin" Value="1,1"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="TextAlignment" Value="Center"></Setter>
+                <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+            </Style>
+        </Style.Resources>
+
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}"
+                        Margin="{TemplateBinding Margin}">
+                        <TextBlock
+                            Text="{Binding}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Style="{StaticResource TextBlock_HeaderStyle}">
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DataGrid_WhiteHeaderStyle" 
+           TargetType="{x:Type DataGridColumnHeader}"
+           BasedOn="{StaticResource DataGrid_HeaderStyle}">
+        
+        <Setter Property="FontSize" Value="10"></Setter>
+    </Style>
+
+    <Style x:Key="DataGrid_GrayHeaderStyle"
+           TargetType="{x:Type DataGridColumnHeader}"
+           BasedOn="{StaticResource DataGrid_HeaderStyle}">
+
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Padding" Value="5,2" />
+
+    </Style>
+
+    <Style x:Key="DataGrid_WhiteHeaderBoldStyle" 
+           TargetType="{x:Type DataGridColumnHeader}"
+           BasedOn="{StaticResource DataGrid_WhiteHeaderStyle}">
+        
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+
+    <Style x:Key="DataGrid_BlackHeaderStyle" 
+           TargetType="{x:Type DataGridColumnHeader}"
+           BasedOn="{StaticResource DataGrid_WhiteHeaderStyle}">
+
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Background" Value="Black" />
+    </Style>
+
+
+    <Style x:Key="DataGrid_BaseStyle"
+               TargetType="{x:Type DataGrid}">
+
+        <Setter Property="Cursor" Value="Arrow"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"></Setter>
+        <Setter Property="HeadersVisibility" Value="Column"></Setter>
+        <Setter Property="IsReadOnly" Value="True"></Setter>
+    </Style>
+
+</ResourceDictionary>

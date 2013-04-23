@@ -1,0 +1,149 @@
+﻿<local:WindowBase x:Class="VlastelinClient.Windows.WindowKKMSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:VlastelinClient"
+        xml:lang="ru-RU"
+        Title="Настройки ККМ" 
+        Icon="..\Images\Icons\SettingsIcon.png"
+        WindowStartupLocation="CenterScreen"
+        Height="350" 
+        Width="650" 
+        Loaded="Window_Loaded">
+    
+    <Grid
+        Margin="10,5,10,10"
+        Background="{StaticResource White_ColorBrush}">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Column="0"
+            Grid.Row="0"
+            Text="Автоматически обнулять денежную наличность при закрытии смены" >
+        </TextBlock>
+
+        <TextBlock
+            Grid.Column="0"
+            Grid.Row="1"
+            Text="Печатать рекламный текст" >
+        </TextBlock>
+
+        <TextBlock
+            Grid.Column="0"
+            Grid.Row="2"
+            Text="Открывать денежный ящик после печати чека" >
+        </TextBlock>
+
+        <TextBlock
+            Grid.Column="0"
+            Grid.Row="3"
+            Text="Автоматически переводить время" >
+        </TextBlock>
+
+        <TextBlock
+            Grid.Column="0"
+            Grid.Row="4"
+            Text="Проматывать ленту перед отрезкой чека" >
+        </TextBlock>
+
+        <TextBlock
+            Grid.Column="0"
+            Grid.Row="5"
+            Text="Формат печати налогов" >
+        </TextBlock>
+        
+        <TextBlock
+            Grid.Column="0"
+            Grid.Row="6"
+            Text="Тип отрезки чека" >
+        </TextBlock>
+
+        <CheckBox
+            Grid.Column="1"
+            Grid.Row="0"
+            Name="CheckBoxZeroCashWhenCloseSession">
+        </CheckBox>
+
+        <CheckBox
+            Grid.Column="1"
+            Grid.Row="1"
+            Name="CheckBoxPrintFooterext">
+        </CheckBox>
+
+        <CheckBox
+            Grid.Column="1"
+            Grid.Row="2"
+            Name="CheckBoxOpenCashBoxWhenFheckClosed">
+        </CheckBox>
+
+        <CheckBox
+            Grid.Column="1"
+            Grid.Row="3"
+            Name="CheckBoxAutomaticDaylightShift">
+        </CheckBox>
+
+        <CheckBox
+            Grid.Column="1"
+            Grid.Row="4"
+            Name="CheckBoxCheckScrollBeforeCut">
+        </CheckBox>
+
+        <ComboBox
+            Grid.Column="1"
+            Grid.Row="5"
+            Name="ComboBoxCheckCutType"
+            ItemsSource="{Binding CheckCutTypes}">
+        </ComboBox>
+
+        <ComboBox
+            Grid.Column="1"
+            Grid.Row="6"
+            Name="ComboBoxTaxesPrintingFormat"
+            ItemsSource="{Binding TaxesPrintingFormats}">
+        </ComboBox>
+
+        <Grid
+            Width="300"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="7"
+            Margin="10,0,0,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="0"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Content="Сохранить" 
+                Click="ButtonSave_Click">
+            </Button>
+
+            <Button
+                Grid.Column="1"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Content="Выйти"
+                Click="ButtonExit_Click">
+            </Button>
+        </Grid>
+
+    </Grid>
+</local:WindowBase>

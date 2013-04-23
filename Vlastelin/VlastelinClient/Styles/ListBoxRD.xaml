@@ -1,0 +1,696 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CommonRD.xaml"/>
+        <ResourceDictionary Source="BorderRD.xaml"/>
+        <ResourceDictionary Source="TextBlockRD.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--LISTBOX-->
+
+    <Style
+	    x:Key="ListBox_BaseStyle"
+	    TargetType="{x:Type ListBox}"
+	    BasedOn="{StaticResource BaseStyle}">
+
+        <Style.Triggers>
+            <Trigger
+			    Property="IsEnabled"
+			    Value="False">
+                <Setter
+				    Property="Opacity"
+				    Value="0.75" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+	    x:Key="ListBox_ItemList_Style"
+	    TargetType="{x:Type ListBox}"
+	    BasedOn="{StaticResource BaseStyle}">
+
+        <Setter
+		    Property="Padding"
+		    Value="5,3" />
+        <Setter
+		    Property="Margin"
+		    Value="0" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource White_ColorBrush}">
+        </Setter>
+        <Setter
+            Property="BorderBrush"
+            Value="{StaticResource GreyBlue_ColorBrush}">
+        </Setter>
+        <Setter
+            Property="BorderThickness"
+            Value="1">
+        </Setter>
+        <Setter
+            Property="Border.CornerRadius"
+            Value="0">
+        </Setter>
+        <Setter
+            Property="ScrollViewer.HorizontalScrollBarVisibility"
+            Value="Hidden">
+        </Setter>
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+	    x:Key="ListBoxItem_BaseStyle"
+	    TargetType="{x:Type ListBoxItem}"
+	    BasedOn="{StaticResource BaseStyle}">
+        <Setter
+		    Property="VerticalContentAlignment"
+		    Value="Center" />
+        <Setter
+		    Property="HorizontalContentAlignment"
+		    Value="Stretch" />
+        <Setter
+		    Property="FocusVisualStyle"
+		    Value="{x:Null}" />
+
+        <Style.Triggers>
+            <Trigger
+			    Property="IsEnabled"
+			    Value="False">
+                <Setter
+				    Property="Opacity"
+				    Value="0.75" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+	    x:Key="{x:Type ListBoxItem}"
+	    TargetType="{x:Type ListBoxItem}"
+	    BasedOn="{StaticResource ListBoxItem_BaseStyle}">
+
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+        </Style.Resources>
+
+        <Setter
+		    Property="Foreground"
+		    Value="Black" />
+        <Setter
+		    Property="Padding"
+		    Value="0" />
+        <Setter
+		    Property="Margin"
+		    Value="0" />
+        <Setter
+		    Property="Cursor"
+		    Value="Hand" />
+    </Style>
+
+    <!--=======================================-->
+
+    <Style
+	    x:Key="ListBoxItem_NormalStyle"
+	    TargetType="{x:Type ListBoxItem}"
+	    BasedOn="{StaticResource ListBoxItem_BaseStyle}">
+
+        <Setter
+		    Property="Foreground"
+		    Value="Black" />
+        <Setter
+		    Property="Padding"
+		    Value="0" />
+        <Setter
+		    Property="Margin"
+		    Value="0" />
+    </Style>
+
+    <!--=======================================-->
+
+    <DataTemplate
+        x:Key="ListBoxItem_Bus_Template">
+
+        <Border
+            Name="borderBusInfo"
+            Style="{StaticResource Border_ListBoxItem_Style}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid
+                    Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Name="textBlockManufacter"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_ListItem_Style}"
+                        Text="{Binding Manufacter}">
+                    </TextBlock>
+
+                    <TextBlock
+                        Name="textBlockModel"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource TextBlock_ListItem_Style}"
+                        Text="{Binding Model}">
+                    </TextBlock>
+
+                    <TextBlock
+                        Name="textBlockRegNumber"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_ListItem_Style}"
+                        Text="{Binding RegNumber}">
+                    </TextBlock>
+                </Grid>
+
+                <Grid
+                    Grid.Column="1">
+                    <Image Name="selectedItemImage"
+                           Style="{StaticResource Image_ListBoxSelectItem_Style}">
+                    </Image>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <DataTemplate.Triggers>
+            <DataTrigger
+	            Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+                <Setter
+				        TargetName="textBlockManufacter"    
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="textBlockModel"    
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="textBlockRegNumber"
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="borderBusInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderBusInfo"     
+                        Property="BorderBrush"
+				        Value="Gray" />
+                <Setter
+				        TargetName="selectedItemImage"     
+                        Property="Visibility"
+				        Value="Visible" />
+
+            </DataTrigger>
+            <DataTrigger
+	            Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+
+                <Setter
+				        TargetName="borderBusInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderBusInfo"     
+                        Property="BorderBrush"
+				        Value="LightGray" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+
+    </DataTemplate>
+
+    <!--=======================================-->
+
+    <DataTemplate
+        x:Key="ListBoxItem_Name_Template">
+        <Border
+            Name="borderNameInfo"
+            Height="40"
+            Style="{StaticResource Border_ListBoxItem_Style}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                        Name="textBlockName"
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_ListItem_Style}"
+                        Text="{Binding Name}">
+                </TextBlock>
+
+                <Image 
+                        Grid.Column="1"
+                        Name="selectedItemImage"
+                        Style="{StaticResource Image_ListBoxSelectItem_Style}"
+                        Width="25"
+                        Height="40">
+                </Image>
+            </Grid>
+        </Border>
+
+        <DataTemplate.Triggers>
+            <DataTrigger
+	            Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+                <Setter
+				        TargetName="textBlockName"    
+                        Property="FontWeight"
+				        Value="Bold" />
+
+                <Setter
+				        TargetName="borderNameInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderNameInfo"     
+                        Property="BorderBrush"
+				        Value="Gray" />
+                <Setter
+				        TargetName="selectedItemImage"     
+                        Property="Visibility"
+				        Value="Visible" />
+            </DataTrigger>
+            <DataTrigger
+	            Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+
+                <Setter
+				        TargetName="borderNameInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderNameInfo"     
+                        Property="BorderBrush"
+				        Value="LightGray" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <!--=======================================-->
+
+    <DataTemplate
+        x:Key="ListBoxItem_NameSurname_Template">
+        <Border
+            Name="borderItemInfo"
+            Style="{StaticResource Border_ListBoxItem_Style}"
+            Height="40">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                        Name="textBlockSurname"
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_ListItem_Style}"
+                        Text="{Binding Surname}">
+                </TextBlock>
+
+                <TextBlock
+                        Name="textBlockName"
+                        Grid.Column="1"
+                        Style="{StaticResource TextBlock_ListItem_Style}"
+                        Text="{Binding Name}">
+                </TextBlock>
+
+                <Image 
+                        Grid.Column="2"
+                        Name="selectedItemImage"
+                        Style="{StaticResource Image_ListBoxSelectItem_Style}">
+                </Image>
+            </Grid>
+        </Border>
+
+        <DataTemplate.Triggers>
+            <DataTrigger
+	            Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+                <Setter
+				        TargetName="textBlockName"    
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="textBlockSurname"    
+                        Property="FontWeight"
+				        Value="Bold" />
+
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="Gray" />
+                <Setter
+				        TargetName="selectedItemImage"     
+                        Property="Visibility"
+				        Value="Visible" />
+            </DataTrigger>
+            <DataTrigger
+	            Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="LightGray" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+
+    </DataTemplate>
+
+    <!--=======================================-->
+
+    <DataTemplate
+        x:Key="ListBoxItem_Owner_Template">
+
+        <Border
+            Name="borderItemInfo"
+            Style="{StaticResource Border_ListBoxItem_Style}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" ></RowDefinition>
+                    <RowDefinition Height="Auto" ></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Name="textBlockName"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Style="{StaticResource TextBlock_Trimming_Style}"
+                    HorizontalAlignment="Left"
+                    Text="{Binding Name}"
+                    MaxWidth="200">
+                </TextBlock>
+
+                <Grid
+                    Grid.Column="0"
+                    Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Name="textBlockDirName"
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_ListItemSmall_Style}"
+                        Text="{Binding DirName}">
+                    </TextBlock>
+
+                    <TextBlock
+                        Name="textBlockDirSurname"
+                        Grid.Column="1"
+                        Style="{StaticResource TextBlock_ListItemSmall_Style}"
+                        Text="{Binding DirSurname}">
+                    </TextBlock>
+                </Grid>
+
+                <Image 
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Name="selectedItemImage"
+                        Style="{StaticResource Image_ListBoxSelectItem_Style}">
+                </Image>
+
+            </Grid>
+        </Border>
+
+        <DataTemplate.Triggers>
+            <DataTrigger
+	            Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+                <Setter
+				        TargetName="textBlockName"    
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="Gray" />
+                <Setter
+				        TargetName="selectedItemImage"     
+                        Property="Visibility"
+				        Value="Visible" />
+
+            </DataTrigger>
+            <DataTrigger
+	            Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="LightGray" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <!--=======================================-->
+
+    <DataTemplate
+        x:Key="ListBoxItem_Trip_Template">
+
+        <Border
+            Name="borderItemInfo"
+            Height="40"
+            Style="{StaticResource Border_ListBoxItem_Style}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock
+                        Name="textBlockDepTown"
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_ListItem_Style}"
+                        Text="{Binding Departure.Name}">
+                </TextBlock>
+
+                <TextBlock
+                        Name="textBlockArrTown"
+                        Grid.Column="1"
+                        Style="{StaticResource TextBlock_ListItem_Style}"
+                        Text="{Binding Arrival.Name}">
+                </TextBlock>
+                <Image 
+                        Grid.Column="2"
+                        Name="selectedItemImage"
+                        Style="{StaticResource Image_ListBoxSelectItem_Style}">
+                </Image>
+            </Grid>
+        </Border>
+
+        <DataTemplate.Triggers>
+            <DataTrigger
+	            Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+                <Setter
+				        TargetName="textBlockDepTown"    
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="textBlockArrTown"    
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="Gray" />
+                <Setter
+				        TargetName="selectedItemImage"     
+                        Property="Visibility"
+				        Value="Visible" />
+
+            </DataTrigger>
+            <DataTrigger
+	            Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="LightGray" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+
+    </DataTemplate>
+
+    <!--=======================================-->
+
+    <DataTemplate
+        x:Key="ListBoxItem_TripSmall_Template">
+
+        <Border
+            Name="borderItemInfo"
+            Style="{StaticResource Border_ListBoxItem_SmallStyle}">
+
+            <Grid>
+                <TextBlock
+                    Name="textBlockItem"
+                    Style="{StaticResource TextBlock_ListItem_Style}"
+                    Text="{Binding NameString}"
+                    HorizontalAlignment="Left"
+                    MaxWidth="180">
+                </TextBlock>
+            </Grid>
+        </Border>
+
+        <DataTemplate.Triggers>
+            <DataTrigger
+	            Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+                <Setter
+				        TargetName="textBlockItem"    
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="Gray" />
+            </DataTrigger>
+            <DataTrigger
+	            Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="LightGray" />
+            </DataTrigger>
+            <DataTrigger
+	            Binding="{Binding HasSchedule}"
+		        Value="False">
+
+                <Setter
+				    TargetName="borderItemInfo"     
+                    Property="Background"
+				    Value="#D3D3D3" />
+                <Setter
+				    TargetName="borderItemInfo"     
+                    Property="BorderBrush"
+				    Value="LightGray" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+
+    </DataTemplate>
+
+    <!--=======================================-->
+
+    <DataTemplate
+        x:Key="ListBoxItem_TripSheduleSmall_Template">
+
+        <Border
+            Name="borderItemInfo"
+            Style="{StaticResource Border_ListBoxItem_SmallStyle}">
+
+            <TextBlock
+                    Name="textBlockTime"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Style="{StaticResource TextBlock_ListItemSmall_Style}"
+                    Text="{Binding Time}"
+                    FontSize="15">
+            </TextBlock>
+        </Border>
+
+        <DataTemplate.Triggers>
+            <DataTrigger
+	            Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+                <Setter
+				        TargetName="textBlockTime"    
+                        Property="FontWeight"
+				        Value="Bold" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="Gray" />
+
+            </DataTrigger>
+            <DataTrigger
+	            Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=OneWay}"
+		        Value="True">
+
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="Background"
+				        Value="{StaticResource GreyBlue_ColorBrush}" />
+                <Setter
+				        TargetName="borderItemInfo"     
+                        Property="BorderBrush"
+				        Value="LightGray" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+
+    </DataTemplate>
+
+    <!--/ LISTBOX-->
+    
+</ResourceDictionary>

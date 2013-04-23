@@ -1,0 +1,357 @@
+﻿<local:WindowBase x:Class="VlastelinClient.Windows.WindowPassenger"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended"
+        xmlns:uc="clr-namespace:VlastelinClient.UserControls"
+        xmlns:local="clr-namespace:VlastelinClient"
+        xml:lang="ru-RU"
+        WindowStartupLocation="CenterScreen"
+        Title="Данные пассажира" 
+        Icon="..\Images\Icons\logo.ico"
+        Height="650" 
+        Width="420" 
+        Loaded="WindowBase_Loaded" 
+        Closing="WindowBase_Closing">
+    
+    <Grid
+        Margin="{StaticResource Margin_Border_Outside}"
+        Background="{StaticResource White_ColorBrush}">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            Margin="0,7,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                Height="30"
+                Style="{StaticResource Border_LineStyle}">
+
+                <TextBlock
+                    Text="Время на оформление билета"
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                </TextBlock>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Style="{StaticResource Border_GroupStyle}">
+                
+                <Border.Resources>
+                    <Style
+		                x:Key="TextBlock_Time_Style"
+		                TargetType="{x:Type TextBlock}"
+		                BasedOn="{StaticResource TextBlock_BaseStyle}">
+
+                        <Setter
+			                Property="HorizontalAlignment"
+			                Value="Center" />
+                        <Setter
+			                Property="FontSize"
+			                Value="25" />
+                        <Setter
+			                Property="FontStyle"
+			                Value="Italic" />
+                    </Style>
+                    
+                </Border.Resources>
+              
+                    <TextBlock
+                        Name="textBlockTime"
+                        Text="{Binding EstimatedTime, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource TextBlock_Time_Style}">
+                    </TextBlock>
+            </Border>
+        </Grid>
+
+        <Grid
+            Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                Height="30"
+                Style="{StaticResource Border_LineStyle}">
+
+                    <TextBlock
+                        Text="Текущий рейс"
+                        Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                    </TextBlock>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Style="{StaticResource Border_GroupStyle}">
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="№ места">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding CurrentSeat.SeatNumber}"
+                        Style="{StaticResource TextBlock_BoldDescription_Style}">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Маршрут">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding Shedule.TS.Trip.NameString}"
+                        Style="{StaticResource TextBlock_BoldDescription_Style}">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="Дополнительный маршрут">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding CurrentSeat.TripPrice.Name}">
+                    </TextBlock>
+                    
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Время отправления">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text="{Binding CurrentSeat.TripDateStr}"
+                        Style="{StaticResource TextBlock_BoldDescription_Style}">
+                    </TextBlock>
+                    
+                    <CheckBox
+                        Name="checkBoxAnotherArrival"
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        Content="Изм. пункт прибытия" 
+                        Checked="checkBoxAnotherArrival_Checked" 
+                        TabIndex="10"></CheckBox>
+                    
+                    <TextBox
+                        Name="textBoxAnotherArrival"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Visibility="{Binding ElementName=checkBoxAnotherArrival, Path=IsChecked, Converter={StaticResource boolToVisibilityConverter}}">
+                    </TextBox>
+
+                    <TextBlock
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Text="Цена билета">
+                    </TextBlock>
+
+                    <extToolkit:DoubleUpDown
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        MinWidth="100"
+                        x:Name="doubleUpDownPrice"
+                        FormatString="F2"
+                        Value="{Binding CurrentSeat.Price, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+                        Increment="50"
+                        Minimum="0"
+                        Style="{StaticResource DoubleUpDown_Style}"
+                        TabIndex="9">
+                    </extToolkit:DoubleUpDown>
+
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid
+            Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                Height="30"
+                Style="{StaticResource Border_LineStyle}">
+
+                <TextBlock
+                        Text="Данные пассажира"
+                        Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                </TextBlock>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Style="{StaticResource Border_GroupStyle}">
+
+                <Grid
+                    Grid.Row="3"
+                    Name="gridDataForms" KeyDown="gridDataForms_KeyDown">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                         Grid.Row="0"
+                         Grid.Column="0"
+                         Text="Фамилия">
+                    </TextBlock>
+
+                    <TextBox
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         Name="textBoxSurname"
+                         Text="{Binding Passenger.Surname, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnExceptions=True}" TabIndex="1">
+                    </TextBox>
+
+
+                    <TextBlock
+                         Grid.Row="1"
+                         Grid.Column="0"
+                         Text="Имя">
+                    </TextBlock>
+
+                    <TextBox
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         Name="textBoxName"
+                         Text="{Binding Passenger.Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnExceptions=True}" TabIndex="2">
+                    </TextBox>
+
+                    <TextBlock
+                         Grid.Row="2"
+                         Grid.Column="0"
+                         Text="Отчество">
+                    </TextBlock>
+
+                    <TextBox
+                         Grid.Row="2"
+                         Grid.Column="1"
+                         Name="textBoxPatronymic"
+                         Text="{Binding Passenger.Patronymic, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnExceptions=True}" TabIndex="3">
+                    </TextBox>
+
+                    <TextBlock
+                         Grid.Row="4"
+                         Grid.Column="0"
+                         Text="Серия документа">
+                    </TextBlock>
+
+                    <TextBox
+                         Grid.Row="4"
+                         Grid.Column="1"
+                         x:Name="textBoxDocSer"
+                         Text="{Binding Passenger.DocSer, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnExceptions=True}"
+                         TabIndex="4">
+                    </TextBox>
+
+                    <TextBlock
+                         Grid.Row="5"
+                         Grid.Column="0"
+                         Text="Номер документа">
+                    </TextBlock>
+
+                    <uc:MaskedTextBox
+                         Grid.Row="5"
+                         Grid.Column="1"
+                         x:Name="textBoxDocNum"
+                         Text="{Binding Passenger.DocNum, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnExceptions=True}"
+                         Mask="{StaticResource Mask_Natural_Digit}" TabIndex="5">
+                    </uc:MaskedTextBox>
+
+                    <TextBlock
+                         Grid.Row="6"
+                         Grid.Column="0"
+                         Text="Дата выдачи документа">
+                    </TextBlock>
+                    
+                    <uc:CustomDatePicker
+                        x:Name="datePickerDocDate"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        SelectedDate="{Binding Passenger.DocDate, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TabIndex="6" PreviewKeyDown="datePickerDocDate_PreviewKeyDown">
+                    </uc:CustomDatePicker>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid
+            Grid.Row="3">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Name="buttonSell"
+                Grid.Column="0"
+                Content="Оформить"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Click="Buy_Click" TabIndex="7">
+            </Button>
+
+            <Button
+                Grid.Column="2"
+                Content="Отмена" 
+                IsCancel="True"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Click="Exit_Click" TabIndex="8">
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</local:WindowBase>

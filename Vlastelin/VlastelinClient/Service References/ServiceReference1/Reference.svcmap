@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1a47af39-3aef-4d70-a8db-6bed114051fa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9999/VlastelinSvc/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="vlastelinService1.wsdl" MetadataType="Wsdl" ID="dd95d21e-dcfd-4e94-b353-eef8cbaae545" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="55d31200-8249-41c2-b0f0-0ce07e058892" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="vlastelinService.xsd" MetadataType="Schema" ID="33109230-bdaa-44e7-9e30-064247cf9a64" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="d62ab2d7-dfd0-4c45-b7ec-32a33ded5279" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="Vlastelin.Data.Model1.xsd" MetadataType="Schema" ID="00d5b9b2-795d-4bb8-8d9e-234cf4249bce" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="Vlastelin.Common1.xsd" MetadataType="Schema" ID="3ee931c4-521b-4f0a-a928-7d853a865342" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="System.Data1.xsd" MetadataType="Schema" ID="fdad6060-dd97-45b9-a2d4-60e55463faa2" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="Vlastelin.Data.Model.ExportedData2.xsd" MetadataType="Schema" ID="9192e9bd-7be9-4ced-9c53-398c30085e17" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="System1.xsd" MetadataType="Schema" ID="67163f80-5a80-4b2d-bc19-921bedff1d08" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+    <MetadataFile FileName="VlastelinServer1.xsd" MetadataType="Schema" ID="caa959ef-f2a3-407b-97e1-2f3515bd2a4b" SourceId="1" SourceUrl="http://localhost:9999/VlastelinSvc/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

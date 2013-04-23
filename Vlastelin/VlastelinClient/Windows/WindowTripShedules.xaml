@@ -1,0 +1,406 @@
+﻿<local:WindowBase x:Class="VlastelinClient.Windows.WindowTripShedules"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:VlastelinClient.UserControls"
+        xmlns:extToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended"
+        xmlns:local="clr-namespace:VlastelinClient"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xml:lang="ru-RU"
+        Title="Расписание маршрутов" 
+        Icon="..\Images\Icons\CatalogsIcon.png"
+        Height="700" 
+        Width="930"
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"
+        Loaded="WindowBase_Loaded">   
+
+    <extToolkit:BusyIndicator IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged}" BusyContent="Идет загрузка...">
+        
+    <Grid
+        Margin="{StaticResource Margin_Border_Outside}"
+        Background="{StaticResource White_ColorBrush}">
+
+                <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--<Border
+            Grid.Row="0"
+            Margin ="0"
+            Style="{StaticResource Border_GroupStyle}">-->
+            <Border 
+                Grid.Row="0"
+                Height="5">
+            </Border>
+
+            <Border 
+                Grid.Row="1"
+                Style="{StaticResource Border_SearchArea_Style}">
+
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Height="20"
+                        Style="{StaticResource Border_LineStyle}">
+
+                        <TextBlock
+                            Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                            Text="Поиск"
+                            HorizontalAlignment="Left">
+                        </TextBlock>
+                    </Border>
+
+                    <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Пункт отправления"
+                    Style="{StaticResource TextBlock_FilterDescription_Style}">
+                </TextBlock>
+                
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="Пункт прибытия"
+                    Style="{StaticResource TextBlock_FilterDescription_Style}">
+                </TextBlock>
+
+                <uc:ClearingTextBox
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    x:Name="textBoxTripFilterDepartureTown"
+                    Margin="{StaticResource Margin_TextBox_Filter}"
+                    FilterTextChanged="Filter_TextChanged">
+                </uc:ClearingTextBox>
+                
+                <uc:ClearingTextBox
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    x:Name="textBoxTripFilterArrivalTown"
+                    Margin="{StaticResource Margin_TextBox_Filter}"
+                    FilterTextChanged="Filter_TextChanged">
+                </uc:ClearingTextBox>
+            </Grid>
+        </Border>
+
+        <Grid
+            Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid
+                Grid.Column="0">
+                
+                <ListBox
+                    Grid.Row="0"
+                    Style="{StaticResource ListBox_ItemList_Style}"
+                    Name="listBoxTrips"
+                    ItemsSource="{Binding Trips, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                    ItemTemplate="{StaticResource ListBoxItem_TripSmall_Template}" 
+                    SelectionChanged="listBoxTrips_SelectionChanged" Loaded="listBoxTrips_Loaded">
+                </ListBox>
+            </Grid>     
+
+                <Grid
+                    Grid.Column="1">
+                
+                        <Border
+                            Name="Border"
+                            Style="{StaticResource Border_GroupStyle}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    Text="Маршрут"
+                                    Margin="{StaticResource Margin_Standart_Bottom}">
+                                </TextBlock>
+
+                                <TextBox
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    IsReadOnly="True"
+                                    Text="{Binding ElementName=listBoxTrips, Path=SelectedItem.NameString, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                    Margin="{StaticResource Margin_Standart_Bottom}">
+                                </TextBox>
+
+                                <TextBlock
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Text="Тип расписания"
+                                    Style="{StaticResource TextBlock_BoldDescription_Style}"
+                                    Margin="{StaticResource Margin_Standart_Bottom}">
+                                </TextBlock>
+
+                            <Grid
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Height="30"
+                                Margin="{StaticResource Margin_Standart_Bottom}">
+                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <ComboBox
+                                    Name="comboBoxScheduleTypes"
+                                    Grid.Column="0"
+                                    Margin="0"
+                                    ItemsSource="{Binding ScheduleTypes, Mode=OneWay}"
+                                    SelectedItem="{Binding SelectedSchedule.TS.ScheduleTypeStr, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                                </ComboBox>
+                                
+                                <StackPanel
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                                    <StackPanel.Style>
+                                        <Style
+                                            TargetType="{x:Type StackPanel}">
+                                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=comboBoxScheduleTypes, Path=SelectedItem}" Value="Единоразово">
+                                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    
+                                    <TextBlock
+                                        Text="Дата"
+                                        VerticalAlignment="Center"
+                                        Margin="10,0,5,0">
+                                    </TextBlock>
+
+                                    <uc:CustomDatePicker
+                                        x:Name="datePickerDate" 
+                                        SelectedDate="{Binding SelectedSchedule.DepartureTime, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                                    </uc:CustomDatePicker>
+                                </StackPanel>
+                            </Grid>
+                                
+
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Style="{StaticResource TextBlock_BoldDescription_Style}"
+                                    Text="Автобус"
+                                    Margin="{StaticResource Margin_Standart_Bottom}">
+                                </TextBlock>
+
+                                <ComboBox
+                                    Name="comboBoxBuses"
+                                    Grid.Column="1"
+                                    Grid.Row="2"
+                                    ItemsSource="{Binding Buses, Mode=OneWay}"
+                                    SelectedItem="{Binding SelectedSchedule.TS.Bus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Margin="{StaticResource Margin_Standart_Bottom}"
+                                    DisplayMemberPath="DisplayName">
+                                </ComboBox>
+
+                            <Grid
+                                Grid.Row="4"
+                                Grid.ColumnSpan="2">
+                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <DockPanel
+                                    LastChildFill="True"
+                                    Grid.Column="0">
+
+                                    <Border
+                                        DockPanel.Dock="Top"
+                                        Style="{StaticResource Border_LineStyle}"
+                                        Height="25">
+                                        <TextBlock
+                                            Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                                            Text="Расписание автобусов">
+                                        </TextBlock>
+                                    </Border>
+                                    
+                                    <Border                                    
+                                        Style="{StaticResource Border_GroupStyle}">
+                                        <DataGrid
+                                            CanUserSortColumns="False"
+                                            HeadersVisibility="Column"
+                                            SelectionUnit="FullRow"
+                                            CellStyle="{StaticResource DataGrid_MatrixCell_Style}"
+                                            Style="{StaticResource DataGrid_MatrixStyle}"
+                                            IsReadOnly="True"
+                                            MinWidth="0"
+                                            MinHeight="0"
+                                            VerticalAlignment="Top"
+                                            Name="dataGridMatrix"
+                                            ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.TimeMatrix.DefaultView}" 
+                                            SelectionChanged="dataGridMatrix_SelectionChanged">
+                                        </DataGrid>
+                                    </Border>
+                                </DockPanel>
+
+                                <DockPanel
+                                    LastChildFill="True"
+                                    Grid.Column="1">
+                                    
+                                    <StackPanel
+                                        HorizontalAlignment="Right"
+                                        DockPanel.Dock="Bottom"
+                                        Orientation="Horizontal">
+
+                                        <Button 
+                                            Style="{StaticResource Button_ActionItemStyle}"
+                                            Command="{Binding AddTimeCommand}">
+                                            
+                                            <Button.Content>
+                                                <Image Source="../Images/PlusItemButtonImage.png"></Image>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button 
+                                            Style="{StaticResource Button_Normal_SaveItemStyle}"
+                                            Command="{Binding SaveTimeCommand}">
+                                            <Button.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource multiValuesConverter}">
+                                                    <Binding ElementName="dataGridAddedShedules" Path="ItemsSource" />
+                                                    <Binding ElementName="comboBoxScheduleTypes" Path="SelectedItem" />
+                                                    <Binding ElementName="comboBoxBuses" Path="SelectedItem" />
+                                                    <Binding ElementName="datePickerDate" Path="SelectedDate" />
+                                                </MultiBinding>
+                                            </Button.CommandParameter>
+                                        </Button>
+                                        
+                                        <Button
+                                            Content="Удалить"
+                                            Style="{StaticResource Button_Normal_DeleteItemStyle}"
+                                            Command="{Binding DeleteTimeCommand}"
+                                            CommandParameter="{Binding ElementName=dataGridMatrix, Path=SelectedItem.Row}">
+                                        </Button>
+                                    </StackPanel>
+                                    
+                                    <DataGrid
+                                        Name="dataGridAddedShedules"
+                                        CanUserResizeColumns="False"
+                                        CanUserResizeRows="False"
+                                        ItemsSource="{Binding TripTimeDictionary}"
+                                        IsReadOnly="False"
+                                        CellStyle="{StaticResource DataGrid_Cell_Style}" >
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn
+                                                Width="*"
+                                                Header="Город"
+                                                HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock
+                                                            Text="{Binding Town.Name, Mode=OneWay}"
+                                                            Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                            <DataGridTemplateColumn
+                                                Width="0.6*"
+                                                Header="Время"
+                                                HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock
+                                                            Text="{Binding Time, Mode=OneWay}"
+                                                            Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                                <DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <ComboBox
+                                                            HorizontalAlignment="Stretch"
+                                                            ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ConstantTimeList}"
+                                                            SelectedItem="{Binding Time, Mode=TwoWay}"
+                                                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGridCell}, Path=ActualWidth}">
+                                                        </ComboBox>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellEditingTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </DockPanel>
+                            </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+        </Grid>
+
+        <Border
+            Margin ="0"
+            Style="{StaticResource Border_GroupStyle}"
+            Grid.Row="3">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    Grid.Column="0"
+                    Content="Обновить"
+                    Style="{StaticResource Button_Normal_UpdateStyle}"
+                    Command="{Binding UpdateCommand}"
+                    Click="ButtonUpdate_Click">
+                </Button>
+                <Button
+                    Grid.Column="1"
+                    Content="Создать"
+                    Style="{StaticResource Button_NewItem_Style}"
+                    Command="{Binding AddItemCommand}">
+                </Button>
+                <Button
+                    Grid.Column="2"
+                    Content="Выйти"
+                    Style="{StaticResource Button_Exit_Style}" 
+                    Click="ButtonExit_Click">
+                </Button>
+
+            </Grid>
+        </Border>
+    </Grid>
+    </extToolkit:BusyIndicator>
+
+</local:WindowBase>

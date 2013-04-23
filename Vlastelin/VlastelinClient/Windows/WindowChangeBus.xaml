@@ -1,0 +1,171 @@
+﻿<local:WindowBase x:Class="VlastelinClient.Windows.WindowChangeBus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:VlastelinClient"
+        Title="Смена автобуса" 
+        Icon="..\Images\Icons\BusIcon.png"
+        WindowStartupLocation="CenterScreen"
+        xml:lang="ru-RU"
+        Height="300" 
+        Width="400" Loaded="WindowBase_Loaded">
+
+    <Border
+        Style="{StaticResource Border_GroupStyle}">
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                Height="30"
+                Style="{StaticResource Border_LineStyle}">
+
+                <TextBlock
+                    Text="Текущий рейс"
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                </TextBlock>
+            </Border>
+                  
+            <Grid
+                Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Маршрут"
+                    Style="{StaticResource TextBlock_BoldDescription_Style}">
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{Binding SS.TS.Trip.NameString, UpdateSourceTrigger=PropertyChanged}">
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Время отправления"
+                    Style="{StaticResource TextBlock_BoldDescription_Style}">
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding DepartureTime, UpdateSourceTrigger=PropertyChanged}">
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Автобус"
+                    Style="{StaticResource TextBlock_BoldDescription_Style}">
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Text="{Binding SS.TS.Bus.DisplayNameSeats, UpdateSourceTrigger=PropertyChanged}">
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="Занято мест"
+                    Style="{StaticResource TextBlock_BoldDescription_Style}">
+                </TextBlock>
+
+                <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding BoughtSeats, UpdateSourceTrigger=PropertyChanged}">
+                </TextBlock>
+            </Grid>
+
+            <Border
+                Grid.Row="2"
+                Height="30"
+                Style="{StaticResource Border_LineStyle}">
+
+                <TextBlock
+                    Text="Изменить автобус"
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                </TextBlock>
+            </Border>
+        
+            <Grid
+                Grid.Row="3"
+                Margin="0,10,0,0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Новый автобус"
+                    Style="{StaticResource TextBlock_BoldDescription_Style}">
+                </TextBlock>
+            
+                <ComboBox
+                    Name="comboBoxBuses"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    ItemsSource="{Binding AvailableBuses, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedIndex="0"
+                    DisplayMemberPath="DisplayNameSeats">                
+                </ComboBox>
+
+                <Grid
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    VerticalAlignment="Bottom">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Grid.Column="0"
+                        Style="{StaticResource Button_RoundCorner_Style}"
+                        Content="Сохранить" 
+                        Command="{Binding ChangeBusCommand}"
+                        CommandParameter="{Binding ElementName=comboBoxBuses, Path=SelectedItem}">
+                    </Button>
+
+                    <Button
+                        Grid.Column="1"
+                        Style="{StaticResource Button_RoundCorner_Style}"
+                        Content="Выход"
+                        Click="ButtonCancel_Click">
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</local:WindowBase>

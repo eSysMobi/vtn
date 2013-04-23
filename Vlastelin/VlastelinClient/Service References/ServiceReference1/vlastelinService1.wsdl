@@ -1,0 +1,817 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="vlastelinService" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="vlastelinService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="vlastelinService/Imports">
+      <xsd:import namespace="vlastelinService" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Vlastelin.Common" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model.ExportedData" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/VlastelinServer" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IVlastelinSrv_RKOAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:RKOAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_RKOAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RKOAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorsGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorsGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorsGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorsGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorGetByLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorGetByLogin" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorGetByLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorGetByLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BranchesGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:BranchesGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BranchesGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BranchesGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BranchAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:BranchAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BranchAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BranchAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BranchDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:BranchDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BranchDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BranchDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BranchEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:BranchEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BranchEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BranchEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleFactGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleFactGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleFactGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleFactGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleFactGetByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleFactGetByDate" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleFactGetByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleFactGetByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleFactAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleFactAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleFactAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleFactAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleFactDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleFactDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleFactDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleFactDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_MainSettingsGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:MainSettingsGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_MainSettingsGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MainSettingsGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_MainSettingsEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:MainSettingsEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_MainSettingsEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MainSettingsEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationOrderGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:StationOrderGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationOrderGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StationOrderGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationOrderEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:StationOrderEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationOrderEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StationOrderEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleSave_InputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleSave" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_StationScheduleSave_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StationScheduleSaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripPricesGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripPricesGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripPricesGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripPricesGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripPriceEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripPriceEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripPriceEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripPriceEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripPriceSave_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripPriceSave" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripPriceSave_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripPriceSaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_PKOGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:PKOGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_PKOGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PKOGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_PKOAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:PKOAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_PKOAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PKOAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SalesKindsGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SalesKindsGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SalesKindsGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SalesKindsGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SalesKindSell_InputMessage">
+    <wsdl:part name="parameters" element="tns:SalesKindSell" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SalesKindSell_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SalesKindSellResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SalesHistoryGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SalesHistoryGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SalesHistoryGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SalesHistoryGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SalesHistoryBySeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:SalesHistoryBySeat" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SalesHistoryBySeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SalesHistoryBySeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_ReportGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_ReportGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_ReportStatement_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportStatement" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_ReportStatement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportStatementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_ReportPassengers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportPassengers" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_ReportPassengers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportPassengersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_ExportRKO_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExportRKO" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_ExportRKO_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportRKOResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_GetAvailableBuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableBuses" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_GetAvailableBuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableBusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorChangeBus_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorChangeBus" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OperatorChangeBus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorChangeBusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TestConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestConnection" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TestConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_GetLastModifiedTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastModifiedTime" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_GetLastModifiedTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastModifiedTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TownsGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:TownsGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TownsGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TownsGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TownAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TownAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TownAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TownAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TownDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TownDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TownDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TownDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TownEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:TownEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TownEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TownEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DocNumGetNextNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:DocNumGetNextNumber" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DocNumGetNextNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DocNumGetNextNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OwnersGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:OwnersGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OwnersGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OwnersGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OwnerAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:OwnerAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OwnerAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OwnerAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OwnerDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:OwnerDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OwnerDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OwnerDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OwnerEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:OwnerEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_OwnerEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OwnerEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BusesGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:BusesGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BusesGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BusesGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BusAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:BusAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BusAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BusAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BusDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:BusDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BusDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BusDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BusEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:BusEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_BusEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BusEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripsGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripsGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripsGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripsGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleSave_InputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleSave" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_TripScheduleSave_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TripScheduleSaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriversGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:DriversGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriversGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DriversGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:DriverAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DriverAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:DriverDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DriverDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:DriverEdit" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DriverEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriversGetByBus_InputMessage">
+    <wsdl:part name="parameters" element="tns:DriversGetByBus" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriversGetByBus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DriversGetByBusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatsGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeatsGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatsGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeatsGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatLock_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeatLock" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatLock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeatLockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatUnlock_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeatUnlock" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatUnlock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeatUnlockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatSell_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeatSell" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatSell_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeatSellResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatSellReturn_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeatSellReturn" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatSellReturn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeatSellReturnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatReserve_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeatReserve" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatReserve_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeatReserveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatReserveCancel_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeatReserveCancel" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_SeatReserveCancel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeatReserveCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_PassengersGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:PassengersGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_PassengersGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PassengersGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_PassengerAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:PassengerAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_PassengerAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PassengerAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverAuthorityAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:DriverAuthorityAdd" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverAuthorityAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DriverAuthorityAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverAuthorityDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:DriverAuthorityDelete" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_DriverAuthorityDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DriverAuthorityDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_RKOGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:RKOGet" />
+  </wsdl:message>
+  <wsdl:message name="IVlastelinSrv_RKOGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RKOGetResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVlastelinSrv">
+    <wsdl:operation name="RKOAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/RKOAdd" message="tns:IVlastelinSrv_RKOAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/RKOAddResponse" message="tns:IVlastelinSrv_RKOAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorsGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OperatorsGet" message="tns:IVlastelinSrv_OperatorsGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OperatorsGetResponse" message="tns:IVlastelinSrv_OperatorsGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OperatorAdd" message="tns:IVlastelinSrv_OperatorAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OperatorAddResponse" message="tns:IVlastelinSrv_OperatorAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OperatorDelete" message="tns:IVlastelinSrv_OperatorDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OperatorDeleteResponse" message="tns:IVlastelinSrv_OperatorDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OperatorEdit" message="tns:IVlastelinSrv_OperatorEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OperatorEditResponse" message="tns:IVlastelinSrv_OperatorEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorGetByLogin">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OperatorGetByLogin" message="tns:IVlastelinSrv_OperatorGetByLogin_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OperatorGetByLoginResponse" message="tns:IVlastelinSrv_OperatorGetByLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BranchesGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/BranchesGet" message="tns:IVlastelinSrv_BranchesGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/BranchesGetResponse" message="tns:IVlastelinSrv_BranchesGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BranchAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/BranchAdd" message="tns:IVlastelinSrv_BranchAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/BranchAddResponse" message="tns:IVlastelinSrv_BranchAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BranchDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/BranchDelete" message="tns:IVlastelinSrv_BranchDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/BranchDeleteResponse" message="tns:IVlastelinSrv_BranchDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BranchEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/BranchEdit" message="tns:IVlastelinSrv_BranchEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/BranchEditResponse" message="tns:IVlastelinSrv_BranchEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleFactGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleFactGet" message="tns:IVlastelinSrv_TripScheduleFactGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleFactGetResponse" message="tns:IVlastelinSrv_TripScheduleFactGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleFactGetByDate">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleFactGetByDate" message="tns:IVlastelinSrv_TripScheduleFactGetByDate_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleFactGetByDateResponse" message="tns:IVlastelinSrv_TripScheduleFactGetByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleFactAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleFactAdd" message="tns:IVlastelinSrv_TripScheduleFactAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleFactAddResponse" message="tns:IVlastelinSrv_TripScheduleFactAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleFactDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleFactDelete" message="tns:IVlastelinSrv_TripScheduleFactDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleFactDeleteResponse" message="tns:IVlastelinSrv_TripScheduleFactDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MainSettingsGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/MainSettingsGet" message="tns:IVlastelinSrv_MainSettingsGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/MainSettingsGetResponse" message="tns:IVlastelinSrv_MainSettingsGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MainSettingsEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/MainSettingsEdit" message="tns:IVlastelinSrv_MainSettingsEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/MainSettingsEditResponse" message="tns:IVlastelinSrv_MainSettingsEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StationOrderGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/StationOrderGet" message="tns:IVlastelinSrv_StationOrderGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/StationOrderGetResponse" message="tns:IVlastelinSrv_StationOrderGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StationOrderEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/StationOrderEdit" message="tns:IVlastelinSrv_StationOrderEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/StationOrderEditResponse" message="tns:IVlastelinSrv_StationOrderEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StationScheduleGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleGet" message="tns:IVlastelinSrv_StationScheduleGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleGetResponse" message="tns:IVlastelinSrv_StationScheduleGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StationScheduleAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleAdd" message="tns:IVlastelinSrv_StationScheduleAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleAddResponse" message="tns:IVlastelinSrv_StationScheduleAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StationScheduleEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleEdit" message="tns:IVlastelinSrv_StationScheduleEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleEditResponse" message="tns:IVlastelinSrv_StationScheduleEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StationScheduleDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleDelete" message="tns:IVlastelinSrv_StationScheduleDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleDeleteResponse" message="tns:IVlastelinSrv_StationScheduleDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StationScheduleSave">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleSave" message="tns:IVlastelinSrv_StationScheduleSave_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/StationScheduleSaveResponse" message="tns:IVlastelinSrv_StationScheduleSave_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripPricesGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripPricesGet" message="tns:IVlastelinSrv_TripPricesGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripPricesGetResponse" message="tns:IVlastelinSrv_TripPricesGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripPriceEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripPriceEdit" message="tns:IVlastelinSrv_TripPriceEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripPriceEditResponse" message="tns:IVlastelinSrv_TripPriceEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripPriceSave">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripPriceSave" message="tns:IVlastelinSrv_TripPriceSave_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripPriceSaveResponse" message="tns:IVlastelinSrv_TripPriceSave_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PKOGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/PKOGet" message="tns:IVlastelinSrv_PKOGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/PKOGetResponse" message="tns:IVlastelinSrv_PKOGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PKOAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/PKOAdd" message="tns:IVlastelinSrv_PKOAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/PKOAddResponse" message="tns:IVlastelinSrv_PKOAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SalesKindsGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SalesKindsGet" message="tns:IVlastelinSrv_SalesKindsGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SalesKindsGetResponse" message="tns:IVlastelinSrv_SalesKindsGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SalesKindSell">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SalesKindSell" message="tns:IVlastelinSrv_SalesKindSell_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SalesKindSellResponse" message="tns:IVlastelinSrv_SalesKindSell_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SalesHistoryGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SalesHistoryGet" message="tns:IVlastelinSrv_SalesHistoryGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SalesHistoryGetResponse" message="tns:IVlastelinSrv_SalesHistoryGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SalesHistoryBySeat">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SalesHistoryBySeat" message="tns:IVlastelinSrv_SalesHistoryBySeat_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SalesHistoryBySeatResponse" message="tns:IVlastelinSrv_SalesHistoryBySeat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/ReportGet" message="tns:IVlastelinSrv_ReportGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/ReportGetResponse" message="tns:IVlastelinSrv_ReportGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportStatement">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/ReportStatement" message="tns:IVlastelinSrv_ReportStatement_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/ReportStatementResponse" message="tns:IVlastelinSrv_ReportStatement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportPassengers">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/ReportPassengers" message="tns:IVlastelinSrv_ReportPassengers_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/ReportPassengersResponse" message="tns:IVlastelinSrv_ReportPassengers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportRKO">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/ExportRKO" message="tns:IVlastelinSrv_ExportRKO_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/ExportRKOResponse" message="tns:IVlastelinSrv_ExportRKO_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableBuses">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/GetAvailableBuses" message="tns:IVlastelinSrv_GetAvailableBuses_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/GetAvailableBusesResponse" message="tns:IVlastelinSrv_GetAvailableBuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorChangeBus">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OperatorChangeBus" message="tns:IVlastelinSrv_OperatorChangeBus_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OperatorChangeBusResponse" message="tns:IVlastelinSrv_OperatorChangeBus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/GetData" message="tns:IVlastelinSrv_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/GetDataResponse" message="tns:IVlastelinSrv_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestConnection">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TestConnection" message="tns:IVlastelinSrv_TestConnection_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TestConnectionResponse" message="tns:IVlastelinSrv_TestConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastModifiedTime">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/GetLastModifiedTime" message="tns:IVlastelinSrv_GetLastModifiedTime_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/GetLastModifiedTimeResponse" message="tns:IVlastelinSrv_GetLastModifiedTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TownsGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TownsGet" message="tns:IVlastelinSrv_TownsGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TownsGetResponse" message="tns:IVlastelinSrv_TownsGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TownAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TownAdd" message="tns:IVlastelinSrv_TownAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TownAddResponse" message="tns:IVlastelinSrv_TownAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TownDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TownDelete" message="tns:IVlastelinSrv_TownDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TownDeleteResponse" message="tns:IVlastelinSrv_TownDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TownEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TownEdit" message="tns:IVlastelinSrv_TownEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TownEditResponse" message="tns:IVlastelinSrv_TownEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DocNumGetNextNumber">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/DocNumGetNextNumber" message="tns:IVlastelinSrv_DocNumGetNextNumber_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/DocNumGetNextNumberResponse" message="tns:IVlastelinSrv_DocNumGetNextNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OwnersGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OwnersGet" message="tns:IVlastelinSrv_OwnersGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OwnersGetResponse" message="tns:IVlastelinSrv_OwnersGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OwnerAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OwnerAdd" message="tns:IVlastelinSrv_OwnerAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OwnerAddResponse" message="tns:IVlastelinSrv_OwnerAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OwnerDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OwnerDelete" message="tns:IVlastelinSrv_OwnerDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OwnerDeleteResponse" message="tns:IVlastelinSrv_OwnerDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OwnerEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/OwnerEdit" message="tns:IVlastelinSrv_OwnerEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/OwnerEditResponse" message="tns:IVlastelinSrv_OwnerEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BusesGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/BusesGet" message="tns:IVlastelinSrv_BusesGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/BusesGetResponse" message="tns:IVlastelinSrv_BusesGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BusAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/BusAdd" message="tns:IVlastelinSrv_BusAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/BusAddResponse" message="tns:IVlastelinSrv_BusAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BusDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/BusDelete" message="tns:IVlastelinSrv_BusDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/BusDeleteResponse" message="tns:IVlastelinSrv_BusDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BusEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/BusEdit" message="tns:IVlastelinSrv_BusEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/BusEditResponse" message="tns:IVlastelinSrv_BusEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripsGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripsGet" message="tns:IVlastelinSrv_TripsGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripsGetResponse" message="tns:IVlastelinSrv_TripsGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripAdd" message="tns:IVlastelinSrv_TripAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripAddResponse" message="tns:IVlastelinSrv_TripAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripDelete" message="tns:IVlastelinSrv_TripDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripDeleteResponse" message="tns:IVlastelinSrv_TripDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripEdit" message="tns:IVlastelinSrv_TripEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripEditResponse" message="tns:IVlastelinSrv_TripEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleGet" message="tns:IVlastelinSrv_TripScheduleGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleGetResponse" message="tns:IVlastelinSrv_TripScheduleGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleAdd" message="tns:IVlastelinSrv_TripScheduleAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleAddResponse" message="tns:IVlastelinSrv_TripScheduleAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleDelete" message="tns:IVlastelinSrv_TripScheduleDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleDeleteResponse" message="tns:IVlastelinSrv_TripScheduleDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleEdit" message="tns:IVlastelinSrv_TripScheduleEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleEditResponse" message="tns:IVlastelinSrv_TripScheduleEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TripScheduleSave">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleSave" message="tns:IVlastelinSrv_TripScheduleSave_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/TripScheduleSaveResponse" message="tns:IVlastelinSrv_TripScheduleSave_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DriversGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/DriversGet" message="tns:IVlastelinSrv_DriversGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/DriversGetResponse" message="tns:IVlastelinSrv_DriversGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/DriverAdd" message="tns:IVlastelinSrv_DriverAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/DriverAddResponse" message="tns:IVlastelinSrv_DriverAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/DriverDelete" message="tns:IVlastelinSrv_DriverDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/DriverDeleteResponse" message="tns:IVlastelinSrv_DriverDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverEdit">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/DriverEdit" message="tns:IVlastelinSrv_DriverEdit_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/DriverEditResponse" message="tns:IVlastelinSrv_DriverEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DriversGetByBus">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/DriversGetByBus" message="tns:IVlastelinSrv_DriversGetByBus_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/DriversGetByBusResponse" message="tns:IVlastelinSrv_DriversGetByBus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeatsGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SeatsGet" message="tns:IVlastelinSrv_SeatsGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SeatsGetResponse" message="tns:IVlastelinSrv_SeatsGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeatLock">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SeatLock" message="tns:IVlastelinSrv_SeatLock_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SeatLockResponse" message="tns:IVlastelinSrv_SeatLock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeatUnlock">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SeatUnlock" message="tns:IVlastelinSrv_SeatUnlock_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SeatUnlockResponse" message="tns:IVlastelinSrv_SeatUnlock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeatSell">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SeatSell" message="tns:IVlastelinSrv_SeatSell_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SeatSellResponse" message="tns:IVlastelinSrv_SeatSell_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeatSellReturn">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SeatSellReturn" message="tns:IVlastelinSrv_SeatSellReturn_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SeatSellReturnResponse" message="tns:IVlastelinSrv_SeatSellReturn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeatReserve">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SeatReserve" message="tns:IVlastelinSrv_SeatReserve_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SeatReserveResponse" message="tns:IVlastelinSrv_SeatReserve_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeatReserveCancel">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/SeatReserveCancel" message="tns:IVlastelinSrv_SeatReserveCancel_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/SeatReserveCancelResponse" message="tns:IVlastelinSrv_SeatReserveCancel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PassengersGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/PassengersGet" message="tns:IVlastelinSrv_PassengersGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/PassengersGetResponse" message="tns:IVlastelinSrv_PassengersGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PassengerAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/PassengerAdd" message="tns:IVlastelinSrv_PassengerAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/PassengerAddResponse" message="tns:IVlastelinSrv_PassengerAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverAuthorityAdd">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/DriverAuthorityAdd" message="tns:IVlastelinSrv_DriverAuthorityAdd_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/DriverAuthorityAddResponse" message="tns:IVlastelinSrv_DriverAuthorityAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverAuthorityDelete">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/DriverAuthorityDelete" message="tns:IVlastelinSrv_DriverAuthorityDelete_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/DriverAuthorityDeleteResponse" message="tns:IVlastelinSrv_DriverAuthorityDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RKOGet">
+      <wsdl:input wsaw:Action="vlastelinService/IVlastelinSrv/RKOGet" message="tns:IVlastelinSrv_RKOGet_InputMessage" />
+      <wsdl:output wsaw:Action="vlastelinService/IVlastelinSrv/RKOGetResponse" message="tns:IVlastelinSrv_RKOGet_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

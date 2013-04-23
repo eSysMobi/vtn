@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="MainSettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrganizationCorrAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationDirName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationDirPatronymic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationDirSurname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationINN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationKPP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReturnedCommission" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MainSettings" nillable="true" type="tns:MainSettings" />
+  <xs:complexType name="Trip">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Arrival" nillable="true" type="tns:Town" />
+          <xs:element minOccurs="0" name="Departure" nillable="true" type="tns:Town" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="_arrivalId" type="xs:long" />
+          <xs:element minOccurs="0" name="_departureId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Trip" nillable="true" type="tns:Trip" />
+  <xs:complexType name="BaseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseItem" nillable="true" type="tns:BaseItem" />
+  <xs:complexType name="Town">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LastNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Prefix" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Town" nillable="true" type="tns:Town" />
+  <xs:complexType name="ArrayOfStationOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StationOrder" nillable="true" type="tns:StationOrder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStationOrder" nillable="true" type="tns:ArrayOfStationOrder" />
+  <xs:complexType name="StationOrder">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Order" type="xs:int" />
+          <xs:element minOccurs="0" name="Town" nillable="true" type="tns:Town" />
+          <xs:element minOccurs="0" name="Trip" nillable="true" type="tns:Trip" />
+          <xs:element minOccurs="0" name="_tId" type="xs:long" />
+          <xs:element minOccurs="0" name="tripId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StationOrder" nillable="true" type="tns:StationOrder" />
+  <xs:complexType name="ArrayOfTown">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Town" nillable="true" type="tns:Town" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTown" nillable="true" type="tns:ArrayOfTown" />
+  <xs:complexType name="TripSchedule">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bus" nillable="true" type="tns:Bus" />
+          <xs:element minOccurs="0" name="BusId" type="xs:long" />
+          <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ScheduleType" type="tns:TripScheduleType" />
+          <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Trip" nillable="true" type="tns:Trip" />
+          <xs:element minOccurs="0" name="_scheduleType" type="xs:int" />
+          <xs:element minOccurs="0" name="tripId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TripSchedule" nillable="true" type="tns:TripSchedule" />
+  <xs:complexType name="Bus">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Manufacter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:Owner" />
+          <xs:element minOccurs="0" name="OwnerId" type="xs:long" />
+          <xs:element minOccurs="0" name="PassengersCount" type="xs:long" />
+          <xs:element minOccurs="0" name="RegNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Bus" nillable="true" type="tns:Bus" />
+  <xs:complexType name="Owner">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DirName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DirPatronymic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DirPosition" nillable="true" type="tns:DirPosition" />
+          <xs:element minOccurs="0" name="DirSurname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocEndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FeeAmount" type="xs:double" />
+          <xs:element minOccurs="0" name="FeeType" type="tns:FeeTypes" />
+          <xs:element minOccurs="0" name="INN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NumSv" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OGRN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="_dirPosition" type="xs:long" />
+          <xs:element minOccurs="0" name="_feeType" type="xs:long" />
+          <xs:element minOccurs="0" name="authorities" nillable="true" type="tns:ArrayOfDriverAuthority" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Owner" nillable="true" type="tns:Owner" />
+  <xs:complexType name="DirPosition">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:NamedItem">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DirPosition" nillable="true" type="tns:DirPosition" />
+  <xs:complexType name="NamedItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NamedItem" nillable="true" type="tns:NamedItem" />
+  <xs:simpleType name="FeeTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Precent" />
+      <xs:enumeration value="FixedAmount" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FeeTypes" nillable="true" type="tns:FeeTypes" />
+  <xs:complexType name="ArrayOfDriverAuthority">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverAuthority" nillable="true" type="tns:DriverAuthority" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverAuthority" nillable="true" type="tns:ArrayOfDriverAuthority" />
+  <xs:complexType name="DriverAuthority">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Driver" nillable="true" type="tns:Driver" />
+          <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:Owner" />
+          <xs:element minOccurs="0" name="_driverId" type="xs:long" />
+          <xs:element minOccurs="0" name="_ownerId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverAuthority" nillable="true" type="tns:DriverAuthority" />
+  <xs:complexType name="Driver">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FIOItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PassportDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PassportIssuer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PassportNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PassportSer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="authorities" nillable="true" type="tns:ArrayOfDriverAuthority" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Driver" nillable="true" type="tns:Driver" />
+  <xs:complexType name="FIOItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Patronymic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FIOItem" nillable="true" type="tns:FIOItem" />
+  <xs:simpleType name="TripScheduleType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Once">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Daily" />
+      <xs:enumeration value="ByWeekday">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ByEven">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ByOdd">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TripScheduleType" nillable="true" type="tns:TripScheduleType" />
+  <xs:complexType name="ArrayOfStationSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StationSchedule" nillable="true" type="tns:StationSchedule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStationSchedule" nillable="true" type="tns:ArrayOfStationSchedule" />
+  <xs:complexType name="StationSchedule">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepartureTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TS" nillable="true" type="tns:TripSchedule" />
+          <xs:element minOccurs="0" name="Town" nillable="true" type="tns:Town" />
+          <xs:element minOccurs="0" name="_tId" type="xs:long" />
+          <xs:element minOccurs="0" name="_tsId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StationSchedule" nillable="true" type="tns:StationSchedule" />
+  <xs:complexType name="ArrayOfTripPrice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TripPrice" nillable="true" type="tns:TripPrice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTripPrice" nillable="true" type="tns:ArrayOfTripPrice" />
+  <xs:complexType name="TripPrice">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Arrival" nillable="true" type="tns:Town" />
+          <xs:element minOccurs="0" name="Departure" nillable="true" type="tns:Town" />
+          <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+          <xs:element minOccurs="0" name="_arrivalId" type="xs:long" />
+          <xs:element minOccurs="0" name="_departureId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TripPrice" nillable="true" type="tns:TripPrice" />
+  <xs:complexType name="ArrayOfPKO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PKO" nillable="true" type="tns:PKO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPKO" nillable="true" type="tns:ArrayOfPKO" />
+  <xs:complexType name="PKO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Operator" nillable="true" type="tns:Operator" />
+          <xs:element minOccurs="0" name="OperatorId" type="xs:long" />
+          <xs:element minOccurs="0" name="Sum" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PKO" nillable="true" type="tns:PKO" />
+  <xs:complexType name="Operator">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FIOItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Branch" nillable="true" type="tns:Branch" />
+          <xs:element minOccurs="0" name="Role" type="tns:Roles" />
+          <xs:element minOccurs="0" name="User" nillable="true" type="tns:VlastelinMembershipUser" />
+          <xs:element minOccurs="0" name="_userId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="branchId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Operator" nillable="true" type="tns:Operator" />
+  <xs:complexType name="Branch">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Town" nillable="true" type="tns:Town" />
+          <xs:element minOccurs="0" name="townId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Branch" nillable="true" type="tns:Branch" />
+  <xs:simpleType name="Roles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Administrator" />
+      <xs:enumeration value="User" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Roles" nillable="true" type="tns:Roles" />
+  <xs:complexType name="VlastelinMembershipUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FailedPasswordAnswerAttemptCount" type="xs:int" />
+      <xs:element minOccurs="0" name="FailedPasswordAnswerAttemptWindowStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FailedPasswordAttemptCount" type="xs:int" />
+      <xs:element minOccurs="0" name="FailedPasswordAttemptWindowStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastActivityDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastLockOutDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastLockedOutDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastLoginDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastPasswordChangedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordAnswer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordQuestion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isApproved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isLocked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="userId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VlastelinMembershipUser" nillable="true" type="tns:VlastelinMembershipUser" />
+  <xs:complexType name="ArrayOfSalesKind">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SalesKind" nillable="true" type="tns:SalesKind" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSalesKind" nillable="true" type="tns:ArrayOfSalesKind" />
+  <xs:complexType name="SalesKind">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:NamedItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Price" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SalesKind" nillable="true" type="tns:SalesKind" />
+  <xs:complexType name="ArrayOfSalesHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SalesHistory" nillable="true" type="tns:SalesHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSalesHistory" nillable="true" type="tns:ArrayOfSalesHistory" />
+  <xs:complexType name="SalesHistory">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="FactPrice" type="xs:double" />
+          <xs:element minOccurs="0" name="Operator" nillable="true" type="tns:Operator" />
+          <xs:element minOccurs="0" name="Returned" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ReturnedCheckNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="SoldItemId" type="xs:long" />
+          <xs:element minOccurs="0" name="SoldItemKind" type="xs:int" />
+          <xs:element minOccurs="0" name="SoldTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="operatorId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SalesHistory" nillable="true" type="tns:SalesHistory" />
+  <xs:complexType name="Seat">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DesiredDestination" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Passenger" nillable="true" type="tns:Passenger" />
+          <xs:element minOccurs="0" name="PassengerId" type="xs:long" />
+          <xs:element minOccurs="0" name="Returned" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SS" nillable="true" type="tns:StationSchedule" />
+          <xs:element minOccurs="0" name="SSid" type="xs:long" />
+          <xs:element minOccurs="0" name="SeatNumber" type="xs:long" />
+          <xs:element minOccurs="0" name="State" type="tns:SeatState" />
+          <xs:element minOccurs="0" name="TripDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TripPrice" nillable="true" type="tns:TripPrice" />
+          <xs:element minOccurs="0" name="TripPriceId" type="xs:long" />
+          <xs:element minOccurs="0" name="_desiredDestination" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="_state" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Seat" nillable="true" type="tns:Seat" />
+  <xs:complexType name="Passenger">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FIOItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocNum" type="xs:long" />
+          <xs:element minOccurs="0" name="DocSer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocType" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Passenger" nillable="true" type="tns:Passenger" />
+  <xs:simpleType name="SeatState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Free" />
+      <xs:enumeration value="Locked" />
+      <xs:enumeration value="Reserved" />
+      <xs:enumeration value="Sold" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SeatState" nillable="true" type="tns:SeatState" />
+  <xs:complexType name="ArrayOfBus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bus" nillable="true" type="tns:Bus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBus" nillable="true" type="tns:ArrayOfBus" />
+  <xs:complexType name="ArrayOfDriver">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Driver" nillable="true" type="tns:Driver" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriver" nillable="true" type="tns:ArrayOfDriver" />
+  <xs:complexType name="ArrayOfPassenger">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Passenger" nillable="true" type="tns:Passenger" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPassenger" nillable="true" type="tns:ArrayOfPassenger" />
+  <xs:complexType name="ArrayOfRKO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RKO" nillable="true" type="tns:RKO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRKO" nillable="true" type="tns:ArrayOfRKO" />
+  <xs:complexType name="RKO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Operator" nillable="true" type="tns:Operator" />
+          <xs:element minOccurs="0" name="OperatorId" type="xs:long" />
+          <xs:element minOccurs="0" name="Sum" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TSF" nillable="true" type="tns:TripScheduleFact" />
+          <xs:element minOccurs="0" name="tsfId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RKO" nillable="true" type="tns:RKO" />
+  <xs:complexType name="TripScheduleFact">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepartureTown" nillable="true" type="tns:Town" />
+          <xs:element minOccurs="0" name="DepartureTownId" type="xs:long" />
+          <xs:element minOccurs="0" name="FactBus" nillable="true" type="tns:Bus" />
+          <xs:element minOccurs="0" name="FactBusId" type="xs:long" />
+          <xs:element minOccurs="0" name="FactDepartureTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FactDriver1" nillable="true" type="tns:Driver" />
+          <xs:element minOccurs="0" name="FactDriver2" nillable="true" type="tns:Driver" />
+          <xs:element minOccurs="0" name="FactDriverId_1" type="xs:long" />
+          <xs:element minOccurs="0" name="FactDriverId_2" type="xs:long" />
+          <xs:element minOccurs="0" name="OperationTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Operator" nillable="true" type="tns:Operator" />
+          <xs:element minOccurs="0" name="OperatorId" type="xs:long" />
+          <xs:element minOccurs="0" name="TS" nillable="true" type="tns:TripSchedule" />
+          <xs:element minOccurs="0" name="TSId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TripScheduleFact" nillable="true" type="tns:TripScheduleFact" />
+  <xs:complexType name="ArrayOfOperator">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Operator" nillable="true" type="tns:Operator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperator" nillable="true" type="tns:ArrayOfOperator" />
+  <xs:complexType name="ArrayOfBranch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Branch" nillable="true" type="tns:Branch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBranch" nillable="true" type="tns:ArrayOfBranch" />
+  <xs:complexType name="ArrayOfTripScheduleFact">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TripScheduleFact" nillable="true" type="tns:TripScheduleFact" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTripScheduleFact" nillable="true" type="tns:ArrayOfTripScheduleFact" />
+  <xs:complexType name="ArrayOfOwner">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Owner" nillable="true" type="tns:Owner" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOwner" nillable="true" type="tns:ArrayOfOwner" />
+  <xs:complexType name="ArrayOfTrip">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Trip" nillable="true" type="tns:Trip" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrip" nillable="true" type="tns:ArrayOfTrip" />
+  <xs:complexType name="ArrayOfTripSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TripSchedule" nillable="true" type="tns:TripSchedule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTripSchedule" nillable="true" type="tns:ArrayOfTripSchedule" />
+</xs:schema>

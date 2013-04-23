@@ -1,0 +1,80 @@
+﻿<Page x:Class="VlastelinClient.Reports.Documents.ReportPassengerTrips"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Height="1122"
+      Width="794">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles\StylesAndTemplatesRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Border
+            Padding="40,40,40,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Name="textBlockHeader"
+                    Grid.Row="0"
+                    HorizontalAlignment="Left"
+                    FontSize="16"
+                    FontWeight="Bold">
+                </TextBlock>
+
+                <DataGrid
+                    Style="{StaticResource DataGrid_BaseStyle}"
+                    Name="dataGridTrips"
+                    Margin="0,10,0,0"
+                    Grid.Row="1">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="Дата маршрута"
+                            Width="0.5*"
+                            HeaderStyle="{StaticResource DataGrid_BlackHeaderStyle}"
+                            Binding="{Binding dt}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Маршрут"
+                            HeaderStyle="{StaticResource DataGrid_BlackHeaderStyle}"
+                            Width="1.2*"
+                            Binding="{Binding trip}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Место"
+                            HeaderStyle="{StaticResource DataGrid_BlackHeaderStyle}"
+                            Width="0.3*"
+                            Binding="{Binding SeatNumber}">
+                        </DataGridTextColumn>
+                        
+                        <DataGridTextColumn
+                            Header="Стоимость"
+                            HeaderStyle="{StaticResource DataGrid_BlackHeaderStyle}"
+                            Width="0.4*"
+                            Binding="{Binding FactPrice}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Оператор"
+                            HeaderStyle="{StaticResource DataGrid_BlackHeaderStyle}"
+                            Width="*"
+                            Binding="{Binding Operator}">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

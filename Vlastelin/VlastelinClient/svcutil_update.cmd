@@ -1,0 +1,1 @@
+"c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\svcutil" /t:code /wrapped http://office.esys.me:9999/VlastelinSvc/mex

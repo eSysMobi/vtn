@@ -1,0 +1,132 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VlastelinClient">
+
+    <!-- BASE COLORS -->
+
+    <Color
+		x:Key="Transparent_Color">Transparent</Color>
+
+    <SolidColorBrush
+		x:Key="White_ColorBrush"
+		Color="#FFFFFFFF" />
+
+    <SolidColorBrush
+		x:Key="Grey_ColorBrush"
+		Color="#FF525452" />
+
+    <SolidColorBrush
+		x:Key="Grey_Light_ColorBrush"
+		Color="#FFC8C8C8" />
+
+    <SolidColorBrush
+		x:Key="Grey_Dark_ColorBrush"
+		Color="#FF3C3C3C" />
+
+    <SolidColorBrush
+		x:Key="Brown_ColorBrush"
+		Color="#FFBD4D00" />
+
+    <SolidColorBrush
+		x:Key="Black_ColorBrush"
+		Color="Black" />
+    
+    <SolidColorBrush
+		x:Key="LightCyan_ColorBrush"
+		Color="LightCyan" />
+
+    <SolidColorBrush
+		x:Key="Blue_ColorBrush"
+		Color="Blue" />
+
+    <SolidColorBrush
+		x:Key="GreyBlue_ColorBrush"
+		Color="#bfcfe2" />
+    
+    <SolidColorBrush
+        x:Key="BrightBlue_ColorBrush"
+        Color="#548bd4">
+    </SolidColorBrush>
+
+    <LinearGradientBrush
+		    x:Key="RedWhite_GradientBrush"
+		    StartPoint="0.5,0"
+		    EndPoint="0.5,1">
+        <GradientStop
+			    Color="White"
+			    Offset="0" />
+        <GradientStop
+			    Color="Red"
+			    Offset="1" />
+    </LinearGradientBrush>
+    <!-- / BASE COLORS -->
+
+    <!-- BORDER -->
+
+    <SolidColorBrush
+		x:Key="Border_Transparent_Background_Brush"
+		Color="{Binding Source={StaticResource Transparent_Color}}" />
+
+    <!-- / BORDER -->
+
+    <!-- TEXTBLOCK -->
+
+    <SolidColorBrush
+		x:Key="TextBlock_Header_Brush"
+		Color="{Binding Color, Source={StaticResource Brown_ColorBrush}}" />
+
+    <SolidColorBrush
+		x:Key="TextBlock_Description_Brush"
+		Color="{Binding Color, Source={StaticResource Black_ColorBrush}}" />
+
+    <!-- / TEXTBLOCK -->
+
+    <!-- BUTTON -->
+
+    <SolidColorBrush
+		x:Key="Button_Foreground_Normal_Brush"
+		Color="{Binding Color, Source={StaticResource Black_ColorBrush}}" />  
+    
+    <!-- / BUTTON -->
+
+    <!-- TEXTBOX -->
+
+    <SolidColorBrush
+		x:Key="TextBox_Background_Normal_Brush"
+		Color="{Binding Color, Source={StaticResource White_ColorBrush}}" />
+
+    <SolidColorBrush
+		x:Key="TextBox_Border_Normal_Brush"
+		Color="{Binding Color, Source={StaticResource Black_ColorBrush}}" />
+
+    <!-- / TEXTBOX -->
+
+    <!-- TEXTBOX -->
+
+    <SolidColorBrush
+		x:Key="GrouBox_Backgroung_Brush"
+		Color="{Binding Color, Source={StaticResource LightCyan_ColorBrush}}" />
+
+    <SolidColorBrush
+		x:Key="GrouBox_Border_Brush"
+		Color="{Binding Color, Source={StaticResource Blue_ColorBrush}}" />
+
+    <!-- / TEXTBOX -->
+
+    <!-- EXPANDER -->
+
+    <SolidColorBrush
+		x:Key="Expander_Background_Brush"
+		Color="{Binding Color, Source={StaticResource LightCyan_ColorBrush}}" />
+
+    <SolidColorBrush
+		x:Key="Expander_Border_Brush"
+		Color="{Binding Color, Source={StaticResource Black_ColorBrush}}" />
+
+    <!-- / EXPANDER -->
+
+    <!--<SolidColorBrush
+		x:Key="DataGridRow_SeatBought_Brush"
+		Color="{Binding {x:Static local:ConfiguratonSettings.ColorSeatBought}}" />-->
+
+</ResourceDictionary>

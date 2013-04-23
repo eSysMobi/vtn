@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfDBError>
+  <DBError>
+    <code>-1</code>
+    <description>Значение уже существует</description>
+  </DBError>
+  <DBError>
+    <code>-2</code>
+    <description>Нельзя удалять перевозчика, пока у него есть автобусы.</description>
+  </DBError>
+  <DBError>
+    <code>-3</code>
+    <description>На данном рейсе больше одного места с данным номером!</description>
+  </DBError>
+  <DBError>
+    <code>-4</code>
+    <description>К этому автобусу всё ещё привязаны отправленные маршруты!</description>
+  </DBError>
+
+  <DBError>
+    <code>-5</code>
+    <description>Владелец с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-6</code>
+    <description>Водитель с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-7</code>
+    <description>Оператор с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-8</code>
+    <description>Посадочное место с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-9</code>
+    <description>Пассажир с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-10</code>
+    <description>Билет на это посадочное место уже продан!</description>
+  </DBError>
+  <DBError>
+    <code>-11</code>
+    <description>Расписание с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-12</code>
+    <description>Нельзя удалять оператора, т.к. на нем числятся проданные билеты!</description>
+  </DBError>
+  <DBError>
+    <code>-13</code>
+    <description>Нельзя удалять оператора, т.к. на нем числятся РКО!</description>
+  </DBError>
+  <DBError>
+    <code>-14</code>
+    <description>Автобус с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-15</code>
+    <description>Нельзя удалять фактическое расписание, т.к. на нем числятся РКО!</description>
+  </DBError>
+  <DBError>
+    <code>-16</code>
+    <description>Маршрут с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-17</code>
+    <description>Город с данным ID отсутствует!</description>
+  </DBError>
+  <DBError>
+    <code>-18</code>
+    <description>Нельзя удалять филиал, т.к. к нему привязаны операторы!</description>
+  </DBError>
+  <DBError>
+    <code>-19</code>
+    <description>Ошибка блокировки таблицы!</description>
+  </DBError>
+  <DBError>
+    <code>-20</code>
+    <description>Для указанного города отсутствует нумерация!</description>
+  </DBError>
+  <DBError>
+    <code>-21</code>
+    <description>К этому автобусу привязаны расписания!</description>
+  </DBError>
+
+  <DBError>
+    <code>-22</code>
+    <description>Нельзя удалять маршрут, пока к нему привязано расписание!</description>
+  </DBError>
+  <DBError>
+    <code>-23</code>
+    <description>Нельзя удалять расписание, т.к. к нему привязаны отправленные автобусы!</description>
+  </DBError>
+  <DBError>
+    <code>-24</code>
+    <description>Нельзя удалять расписание, т.к. к нему привязаны проданные места!</description>
+  </DBError>
+  <DBError>
+    <code>-25</code>
+    <description>Нельзя удалять город, пока к нему привязаны маршруты!</description>
+  </DBError>
+  <DBError>
+    <code>-26</code>
+    <description>Нельзя удалять город, пока к нему привязаны фиилалы!</description>
+  </DBError>
+  <DBError>
+    <code>-27</code>
+    <description>Нельзя удалять город, пока к нему привязано расписание!</description>
+  </DBError>
+  <DBError>
+    <code>-28</code>
+    <description>Нельзя удалять город, пока к нему привязаны расценки!</description>
+  </DBError>
+  <DBError>
+    <code>-29</code>
+    <description>Нельзя удалять город, пока к нему привязаны отправленные автобусы!</description>
+  </DBError>
+
+  <DBError>
+    <code>-30</code>
+    <description>Ошибка внутренней логики: больше одного места продано с данным ID!</description>
+  </DBError>
+
+  <DBError>
+    <code>-31</code>
+    <description>Автобус на этот рейс уже отправлен!</description>
+  </DBError>
+</ArrayOfDBError>

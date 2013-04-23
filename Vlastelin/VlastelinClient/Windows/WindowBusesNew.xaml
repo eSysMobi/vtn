@@ -1,0 +1,404 @@
+﻿<local:WindowBase x:Class="VlastelinClient.WindowBusesNew"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:uc="clr-namespace:VlastelinClient.UserControls"
+        xmlns:extToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended"
+        xmlns:local="clr-namespace:VlastelinClient"
+        xml:lang="ru-RU"
+        Title="Автобусы" 
+        Height="700" 
+        Width="930"
+        ResizeMode="NoResize"
+        Icon="..\Images\Icons\CatalogsIcon.png"
+        Loaded="WindowBase_Loaded"
+        WindowStartupLocation="CenterScreen">
+
+    <extToolkit:BusyIndicator IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged}" BusyContent="Идет загрузка...">
+        
+        <Grid
+            Margin="{StaticResource Margin_Border_Outside}"
+            Background="{StaticResource White_ColorBrush}">
+        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>      
+            
+        <!--<Border
+            Grid.Row="0"
+            Margin ="0"
+            Style="{StaticResource Border_GroupStyle}">-->
+
+            <Border 
+                Grid.Row="0"
+                Height="5">
+            </Border>
+
+            <Border 
+                Grid.Row="1"
+                Style="{StaticResource Border_SearchArea_Style}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Height="20"
+                        Style="{StaticResource Border_LineStyle}">
+
+                        <TextBlock
+                            Style="{StaticResource TextBlock_SmallWhiteHeader_Style}"
+                            Text="Поиск"
+                            HorizontalAlignment="Left">
+                        </TextBlock>
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Производитель"
+                        Style="{StaticResource TextBlock_FilterDescription_Style}">
+                    </TextBlock>
+            
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="Модель"
+                        Style="{StaticResource TextBlock_FilterDescription_Style}">
+                    </TextBlock>
+            
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Text="Кол-во мест"
+                        Style="{StaticResource TextBlock_FilterDescription_Style}">
+                    </TextBlock>
+            
+                    <uc:ClearingTextBox
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        x:Name="textBoxBusFilterManufacter"
+                        Margin="{StaticResource Margin_TextBox_Filter}"
+                        FilterTextChanged="Filter_TextChanged">
+                    </uc:ClearingTextBox>
+            
+                    <uc:ClearingTextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        x:Name="textBoxBusFilterModel"
+                        Margin="{StaticResource Margin_TextBox_Filter}"
+                        FilterTextChanged="Filter_TextChanged">
+                    </uc:ClearingTextBox>
+
+                    <extToolkit:IntegerUpDown
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        x:Name="textBoxBusFilterPassengers" 
+                        Margin="{StaticResource Margin_TextBox_Filter}"
+                        Style="{StaticResource IntegerUpDown_FilterStyle}" 
+                        ValueChanged="textBoxBusFilterPassengers_ValueChanged">
+                    </extToolkit:IntegerUpDown>
+                </Grid>          
+            </Border>
+            
+            <Grid
+                Grid.Row="2">
+            
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            
+                <ListBox
+                    Style="{StaticResource ListBox_ItemList_Style}"
+                    Name="listBoxBuses"
+                    ItemsSource="{Binding Buses}"
+                    ItemTemplate="{StaticResource ListBoxItem_Bus_Template}" Loaded="listBoxBuses_Loaded">
+                </ListBox>
+            
+                <Grid
+                    Grid.Column="1"
+                    DataContext="{Binding ElementName=listBoxBuses, Path=SelectedItem}">
+                
+                    <Border
+                        Name="Border"
+                        Style="{StaticResource Border_GroupStyle}">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="{StaticResource Margin_Standart_Bottom}">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel
+                                    Grid.Column="0"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="Производитель">
+                                    </TextBlock>
+                                    <TextBlock
+                                        Text="*"
+                                        Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                    </TextBlock>
+                                </StackPanel>                                   
+
+                                <TextBox
+                                    Grid.Column="1"
+                                    Name="textBoxBusEditManufacter"
+                                    Text="{Binding Manufacter, Mode=OneWay}">
+                                </TextBox>
+
+                                <StackPanel
+                                    Grid.Column="2"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="Модель">
+                                    </TextBlock>
+                                    <TextBlock
+                                        Text="*"
+                                        Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                    </TextBlock>
+                                </StackPanel>
+
+                                <TextBox
+                                    Grid.Column="3"
+                                    Name="textBoxBusEditModel"
+                                    Text="{Binding Model, Mode=OneWay}">
+                                    </TextBox>
+                                </Grid>
+
+                            <StackPanel
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                Margin="{StaticResource Margin_Standart_Bottom}">
+                                <TextBlock
+                                    Style="{StaticResource TextBlock_BoldDescription_Style}"
+                                    Text="Кол-во мест">
+                                </TextBlock>
+                                <TextBlock
+                                    Text="*"
+                                    Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                Margin="0">
+
+                                <TextBlock
+                                    Style="{StaticResource TextBlock_BoldDescription_Style}"
+                                    Text="ГосНомер">
+                                </TextBlock>
+                                <TextBlock
+                                    Text="*"
+                                    Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                </TextBlock>
+                            </StackPanel>
+
+                                <uc:MaskedTextBox
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="textBoxBusEditPassengersCount"
+                                    Text="{Binding PassengersCount, Mode=OneWay}"
+                                    Margin="{StaticResource Margin_Standart_Bottom}"
+                                    Mask="{StaticResource Mask_Natural_Digit}">
+                                </uc:MaskedTextBox>
+
+                                <TextBox
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    Name="textBoxBusEditRegNumber"
+                                    Text="{Binding RegNumber, Mode=OneWay}"
+                                    Style="{StaticResource TextBox_Normal_Style}"
+                                    Margin="0">
+                                </TextBox>
+                                                              
+                                <Border
+                                    Style="{StaticResource Border_AddInfoStyle}"
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                    <StackPanel
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Orientation="Horizontal"
+                                        Margin="{StaticResource Margin_Standart_Bottom}">
+                                        <TextBlock
+                                            Style="{StaticResource TextBlock_BoldDescription_Style}"
+                                            Text="Перевозчик"
+                                            Margin="0">
+                                        </TextBlock>
+                                        <TextBlock
+                                            Text="*"
+                                            Style="{StaticResource TextBlock_RedAsterisk_Style}">
+                                        </TextBlock>
+                                    </StackPanel>                                       
+                                    
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="ОГРН"
+                                            Margin="{StaticResource Margin_Standart_Bottom}">
+                                        </TextBlock>
+                                    
+                                        <TextBlock
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Text="Свидетельство"
+                                            Margin="0">
+                                        </TextBlock>
+
+                                        <ComboBox
+                                            Name="comboBoxBusOwner"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Owners}"
+                                            DisplayMemberPath="Name"
+                                            Margin="{StaticResource Margin_Standart_Bottom}" 
+                                            SelectedItem="{Binding Owner, Mode=OneWay}">
+                                        </ComboBox>
+
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding ElementName=comboBoxBusOwner, Path=SelectedItem.OGRN, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                            Margin="{StaticResource Margin_Standart_Bottom}">     
+                                        </TextBlock>
+                                    
+                                        <TextBlock
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Text="{Binding ElementName=comboBoxBusOwner, Path=SelectedItem.NumSv, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                            Margin="0">
+                                        </TextBlock>
+                                     </Grid>
+                                </Border>
+                                
+                                <DockPanel
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom">
+                                    
+                                    <StackPanel
+                                        DockPanel.Dock="Right"
+                                        Orientation="Horizontal">
+                                        
+                                        <Button
+                                            Style="{StaticResource Button_Normal_SaveItemStyle}"
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.EditItemCommand}">
+                                            <Button.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource multiValuesConverter}">
+                                                    <Binding />
+                                                    <Binding ElementName="textBoxBusEditManufacter" Path="Text" />
+                                                    <Binding ElementName="textBoxBusEditModel" Path="Text" />
+                                                    <Binding ElementName="textBoxBusEditRegNumber" Path="Text" />
+                                                    <Binding ElementName="textBoxBusEditPassengersCount" Path="Text" />
+                                                    <Binding ElementName="comboBoxBusOwner" Path="SelectedItem" />
+                                                </MultiBinding>
+                                            </Button.CommandParameter>
+                                        </Button>
+                                        <Button
+                                            Style="{StaticResource Button_Normal_DeleteItemStyle}"
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DeleteItemCommand}"
+                                            CommandParameter="{Binding ElementName=listBoxBuses, Path=SelectedItem}">
+                                        </Button>
+                                    </StackPanel>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+            </Grid>
+        </Grid>
+        
+        <Border
+            Margin ="0"
+            Style="{StaticResource Border_GroupStyle}"
+            Grid.Row ="3">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    Grid.Column="0"
+                    Content="Обновить"
+                    Style="{StaticResource Button_Normal_UpdateStyle}"
+                    Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.UpdateCommand}">
+                </Button>
+                <Button
+                    Grid.Column="1"
+                    Content="Создать"
+                    Style="{StaticResource Button_NewItem_Style}"
+                    Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.AddItemCommand}"
+                    CommandParameter="{Binding ElementName=listBoxBuses}">
+                </Button>
+                <Button
+                    Grid.Column="2"
+                    Content="Выйти"
+                    Style="{StaticResource Button_Exit_Style}" 
+                    Click="ButtonExit_Click">
+                </Button>
+
+            </Grid>
+        </Border>  
+    </Grid>
+    </extToolkit:BusyIndicator>
+</local:WindowBase>

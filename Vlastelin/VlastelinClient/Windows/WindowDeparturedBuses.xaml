@@ -1,0 +1,181 @@
+﻿<local:WindowBase x:Class="VlastelinClient.Windows.WindowDeparturedBuses"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:VlastelinClient"
+        xml:lang="ru-RU"
+        Title="Отправленные автобусы" 
+        Icon="..\Images\Icons\BusIcon.png"
+        Height="400" 
+        Width="500" 
+        WindowStartupLocation="CenterScreen">
+
+    <Grid
+        Margin="{StaticResource Margin_Border_Outside}"
+        Background="{StaticResource White_ColorBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            Margin="0,7,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                Height="30"
+                Style="{StaticResource Border_LineStyle}">
+
+                <TextBlock
+                    Text="Дата отправки автобусов"
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                </TextBlock>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Style="{StaticResource Border_GroupStyle}">
+                <TextBlock
+                    Text="{Binding DepartureDate, Converter={StaticResource DateTimeFormatConverter}, ConverterParameter=dd MMMM yyyy}"
+                    HorizontalAlignment="Center">
+                </TextBlock>
+            </Border>
+        </Grid>
+
+        <Grid
+            Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                Height="30"
+                Style="{StaticResource Border_LineStyle}">
+
+                <TextBlock
+                    Text="Отправленные автобусы"
+                    Style="{StaticResource TextBlock_SmallWhiteHeader_Style}">
+                </TextBlock>
+            </Border>
+
+            <DataGrid
+                Grid.Row="1" 
+                Name="dataGridStationSchedules"
+                ItemsSource="{Binding FactTripSchedules, UpdateSourceTrigger=PropertyChanged}"
+                IsReadOnly="True" 
+                CellStyle="{StaticResource DataGrid_Cell_Style}" 
+                RowStyle="{StaticResource DataGrid_Row_Style}"
+                SelectionMode="Single">
+                <DataGrid.ContextMenu >
+                    <ContextMenu x:Name="busContextMenu">
+                        <MenuItem x:Name="cancelDepartureMenuItem" Header="Отменить отправку" Command="{Binding CancelDepartureCommand}" CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}" />
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn
+                        Width="70"
+                        Header="Модель"
+                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding FactBus.Model, Mode=OneWay}"
+                                    Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        Width="70"
+                        Header="Рег.номер"
+                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding FactBus.RegNumber, Mode=OneWay}"
+                                    Style="{StaticResource TextBlock_DataGridCell_Style}"
+                                    TextTrimming="CharacterEllipsis">
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        Width="*"
+                        Header="Маршрут"
+                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding TS.Trip.NameString, Mode=OneWay}"
+                                    Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
+                    <DataGridTemplateColumn
+                        Width="0.6*"
+                        Header="Пункт отправления"
+                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding DepartureTown.Name, Mode=OneWay}"
+                                    Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        Width="70"
+                        Header="Время отправления"
+                        HeaderTemplate="{StaticResource DataGrid_Header_Template}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding FactDepartureTime, Mode=OneWay, Converter={StaticResource DateTimeFormatConverter}, ConverterParameter=HH:mm}"
+                                    Style="{StaticResource TextBlock_DataGridCell_Style}">
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid
+            Grid.Column="0"
+            Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="0"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Content="Отменить отправку"
+                Command="{Binding CancelDepartureCommand}"
+                CommandParameter="{Binding ElementName=dataGridStationSchedules, Path=SelectedItem}">
+            </Button>
+
+            <Button
+                Grid.Column="1"
+                Style="{StaticResource Button_RoundCorner_Style}"
+                Content="Выход" Click="Button_Click">
+            </Button>
+        </Grid>
+    </Grid>
+</local:WindowBase>

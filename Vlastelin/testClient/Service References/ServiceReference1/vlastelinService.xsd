@@ -1,0 +1,1135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="vlastelinService" elementFormDefault="qualified" targetNamespace="vlastelinService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Vlastelin.Common" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model.ExportedData" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/VlastelinServer" />
+  <xs:element name="MainSettingsGet">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MainSettingsGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="MainSettingsGetResult" nillable="true" type="q1:MainSettings" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MainSettingsEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="settings" nillable="true" type="q2:MainSettings" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MainSettingsEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationOrderGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="trip" nillable="true" type="q3:Trip" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationOrderGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="StationOrderGetResult" nillable="true" type="q4:ArrayOfStationOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationOrderEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="trip" nillable="true" type="q5:Trip" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="towns" nillable="true" type="q6:ArrayOfTown" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationOrderEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ts" nillable="true" type="q7:TripSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="StationScheduleGetResult" nillable="true" type="q8:ArrayOfStationSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ss" nillable="true" type="q9:StationSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StationScheduleAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ss" nillable="true" type="q10:StationSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ss" nillable="true" type="q11:StationSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleSave">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="list" nillable="true" type="q12:ArrayOfStationSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationScheduleSaveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripPricesGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="trip" nillable="true" type="q13:Trip" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripPricesGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="TripPricesGetResult" nillable="true" type="q14:ArrayOfTripPrice" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripPriceEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="tp" nillable="true" type="q15:TripPrice" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripPriceEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripPriceSave">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="tPrices" nillable="true" type="q16:ArrayOfTripPrice" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripPriceSaveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PKOGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PKOGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="PKOGetResult" nillable="true" type="q17:ArrayOfPKO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PKOAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="pko" nillable="true" type="q18:PKO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PKOAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PKOAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalesKindsGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalesKindsGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="SalesKindsGetResult" nillable="true" type="q19:ArrayOfSalesKind" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalesKindSell">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="op" nillable="true" type="q20:Operator" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="item" nillable="true" type="q21:SalesKind" />
+        <xs:element minOccurs="0" name="sum" type="xs:double" />
+        <xs:element minOccurs="0" name="checkNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalesKindSellResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalesHistoryGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="from" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="to" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalesHistoryGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="SalesHistoryGetResult" nillable="true" type="q22:ArrayOfSalesHistory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalesHistoryBySeat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="seat" nillable="true" type="q23:Seat" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalesHistoryBySeatResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="SalesHistoryBySeatResult" nillable="true" type="q24:ArrayOfSalesHistory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Vlastelin.Common" minOccurs="0" name="reportType" type="q25:ReportTypes" />
+        <xs:element minOccurs="0" name="from" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="to" type="xs:dateTime" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="param1" nillable="true" type="q26:BaseItem" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="param2" nillable="true" type="q27:BaseItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReportGetResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportStatement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ss" nillable="true" type="q28:StationSchedule" />
+        <xs:element minOccurs="0" name="depTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportStatementResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReportStatementResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportPassengers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="from" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="to" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="surname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="patronymic" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportPassengersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReportPassengersResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportRKO">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="from" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="to" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportRKOResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model.ExportedData" minOccurs="0" name="ExportRKOResult" nillable="true" type="q29:ArrayOfExportedRKO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvailableBuses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ss" nillable="true" type="q30:StationSchedule" />
+        <xs:element minOccurs="0" name="tripDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="minSeatsCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvailableBusesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="GetAvailableBusesResult" nillable="true" type="q31:ArrayOfBus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorChangeBus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ts" nillable="true" type="q32:TripSchedule" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="newBus" nillable="true" type="q33:Bus" />
+        <xs:element minOccurs="0" name="tripDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorChangeBusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="driver" nillable="true" type="q34:Driver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriversGetByBus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="bus" nillable="true" type="q35:Bus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriversGetByBusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="DriversGetByBusResult" nillable="true" type="q36:ArrayOfDriver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatsGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ss" nillable="true" type="q37:StationSchedule" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="price" nillable="true" type="q38:TripPrice" />
+        <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatsGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="SeatsGetResult" nillable="true" type="q39:ArrayOfTupleOfSeatdoublestringfbgMpmQI" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatLock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="seatNum" type="xs:int" />
+        <xs:element minOccurs="0" name="ssID" type="xs:int" />
+        <xs:element minOccurs="0" name="tripPriceId" type="xs:int" />
+        <xs:element minOccurs="0" name="tripDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatLockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="SeatLockResult" nillable="true" type="q40:TupleOfdurationlong" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatUnlock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/VlastelinServer" minOccurs="0" name="slk" type="q41:seatLockKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatUnlockResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatSell">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="op" nillable="true" type="q42:Operator" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="seat" nillable="true" type="q43:Seat" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="passenger" nillable="true" type="q44:Passenger" />
+        <xs:element minOccurs="0" name="sum" type="xs:double" />
+        <xs:element minOccurs="0" name="checkNum" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatSellResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatSellReturn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="op" nillable="true" type="q45:Operator" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="seat" nillable="true" type="q46:Seat" />
+        <xs:element minOccurs="0" name="returnCheckNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="commissionCheckNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatSellReturnResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatReserve">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="seat" nillable="true" type="q47:Seat" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatReserveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SeatReserveResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatReserveCancel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="seat" nillable="true" type="q48:Seat" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeatReserveCancelResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PassengersGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PassengersGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="PassengersGetResult" nillable="true" type="q49:ArrayOfPassenger" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PassengerAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="passenger" nillable="true" type="q50:Passenger" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PassengerAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PassengerAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverAuthorityAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="driverId" type="xs:int" />
+        <xs:element minOccurs="0" name="ownerId" type="xs:int" />
+        <xs:element minOccurs="0" name="num" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverAuthorityAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DriverAuthorityAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverAuthorityDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="daId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverAuthorityDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RKOGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RKOGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="RKOGetResult" nillable="true" type="q51:ArrayOfRKO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RKOAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="rko" nillable="true" type="q52:RKO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RKOAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RKOAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorsGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorsGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="OperatorsGetResult" nillable="true" type="q53:ArrayOfOperator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="op" nillable="true" type="q54:Operator" />
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OperatorAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="op" nillable="true" type="q55:Operator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="op" nillable="true" type="q56:Operator" />
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorGetByLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperatorGetByLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="OperatorGetByLoginResult" nillable="true" type="q57:Operator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BranchesGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BranchesGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="BranchesGetResult" nillable="true" type="q58:ArrayOfBranch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BranchAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="branch" nillable="true" type="q59:Branch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BranchAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BranchAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BranchDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="branch" nillable="true" type="q60:Branch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BranchDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BranchEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="branch" nillable="true" type="q61:Branch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BranchEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleFactGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleFactGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="TripScheduleFactGetResult" nillable="true" type="q62:ArrayOfTripScheduleFact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleFactGetByDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dt" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleFactGetByDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="TripScheduleFactGetByDateResult" nillable="true" type="q63:ArrayOfTripScheduleFact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleFactAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="tsf" nillable="true" type="q64:TripScheduleFact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleFactAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TripScheduleFactAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleFactDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="tsf" nillable="true" type="q65:TripScheduleFact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleFactDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestConnection">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestConnectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestConnectionResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastModifiedTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/Vlastelin.Common" minOccurs="0" name="obj" type="q66:ModifiedObjects" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastModifiedTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLastModifiedTimeResult" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TownsGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TownsGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="TownsGetResult" nillable="true" type="q67:ArrayOfTown" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TownAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="town" nillable="true" type="q68:Town" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TownAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TownAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TownDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="town" nillable="true" type="q69:Town" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TownDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TownEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="town" nillable="true" type="q70:Town" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TownEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DocNumGetNextNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="t" nillable="true" type="q71:Town" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DocNumGetNextNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DocNumGetNextNumberResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OwnersGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OwnersGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="OwnersGetResult" nillable="true" type="q72:ArrayOfOwner" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OwnerAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="owner" nillable="true" type="q73:Owner" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OwnerAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OwnerAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OwnerDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="owner" nillable="true" type="q74:Owner" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OwnerDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OwnerEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="owner" nillable="true" type="q75:Owner" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OwnerEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusesGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusesGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="BusesGetResult" nillable="true" type="q76:ArrayOfBus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="bus" nillable="true" type="q77:Bus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BusAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="bus" nillable="true" type="q78:Bus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="bus" nillable="true" type="q79:Bus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripsGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripsGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="TripsGetResult" nillable="true" type="q80:ArrayOfTrip" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="trip" nillable="true" type="q81:Trip" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TripAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="trip" nillable="true" type="q82:Trip" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="trip" nillable="true" type="q83:Trip" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="TripScheduleGetResult" nillable="true" type="q84:ArrayOfTripSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ts" nillable="true" type="q85:TripSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TripScheduleAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ts" nillable="true" type="q86:TripSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ts" nillable="true" type="q87:TripSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleEditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleSave">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ts" nillable="true" type="q88:TripSchedule" />
+        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="ss" nillable="true" type="q89:ArrayOfStationSchedule" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TripScheduleSaveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriversGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriversGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="DriversGetResult" nillable="true" type="q90:ArrayOfDriver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="driver" nillable="true" type="q91:Driver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DriverAddResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/Vlastelin.Data.Model" minOccurs="0" name="driver" nillable="true" type="q92:Driver" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DriverDeleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

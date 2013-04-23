@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Vlastelin.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Vlastelin.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ReportTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SalesReportFull" />
+      <xs:enumeration value="SalesReportTickets" />
+      <xs:enumeration value="SalesReportNonTickets" />
+      <xs:enumeration value="SalesReportByBus" />
+      <xs:enumeration value="SalesReportByTrip" />
+      <xs:enumeration value="RKOReport" />
+      <xs:enumeration value="PKOReport" />
+      <xs:enumeration value="ReturnedTickets" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReportTypes" nillable="true" type="tns:ReportTypes" />
+  <xs:simpleType name="ModifiedObjects">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Branches" />
+      <xs:enumeration value="Buses" />
+      <xs:enumeration value="DriverAuthorities" />
+      <xs:enumeration value="Drivers" />
+      <xs:enumeration value="Operators" />
+      <xs:enumeration value="Owners" />
+      <xs:enumeration value="Passengers" />
+      <xs:enumeration value="SalesHistory" />
+      <xs:enumeration value="Seats" />
+      <xs:enumeration value="Subtrips" />
+      <xs:enumeration value="Towns" />
+      <xs:enumeration value="Trips" />
+      <xs:enumeration value="TripsSchedule" />
+      <xs:enumeration value="MainSettings" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ModifiedObjects" nillable="true" type="tns:ModifiedObjects" />
+</xs:schema>

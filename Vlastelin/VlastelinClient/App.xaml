@@ -1,0 +1,26 @@
+﻿<Application x:Class="VlastelinClient.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xml:lang="ru-RU"
+             DispatcherUnhandledException="Application_DispatcherUnhandledException"
+             
+              Startup="Application_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\ColorsAndBrushesRD.xaml"/>
+                <ResourceDictionary Source="Styles\ContainerRD.xaml"/>
+                <ResourceDictionary Source="Styles\TextBlockRD.xaml"/>
+                <ResourceDictionary Source="Styles\TextBoxRD.xaml"/>
+                <ResourceDictionary Source="Styles\ButtonRD.xaml"/>
+                <ResourceDictionary Source="Styles\BorderRD.xaml"/>
+                <ResourceDictionary Source="Styles\ListBoxRD.xaml"/>
+                <ResourceDictionary Source="Styles\WindowRD.xaml"/>
+                <ResourceDictionary Source="Styles\DataGridRD.xaml"/>
+                <ResourceDictionary Source="Styles\ComboBoxRD.xaml"/>
+                <ResourceDictionary Source="Styles\DateTimeRD.xaml"/>
+                <ResourceDictionary Source="Styles\OtherRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

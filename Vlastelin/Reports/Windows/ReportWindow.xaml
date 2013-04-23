@@ -1,0 +1,10 @@
+﻿<Window x:Class="Reports.Windows.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Отчет"
+        WindowState="Maximized" 
+        Activated="Window_Activated">
+    <Grid>
+        <DocumentViewer Name="documentViewer" />
+    </Grid>
+</Window>

@@ -1,0 +1,174 @@
+﻿<Page x:Class="Reports.Documents.ReportStatement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Height="1122"
+      Width="794">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles\StylesAndTemplatesRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Border
+            Padding="20,40,30,0">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid
+                    Grid.Row="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        Text="Автобус № АН 800"
+                        FontWeight="Bold"
+                        FontSize="12">
+                    </TextBlock>
+
+                    <TextBlock 
+                        Grid.Column="1"
+                        Margin="0,5,0,0"
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        Text="Ведомость № 2"
+                        FontWeight="Bold"
+                        FontSize="14">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Column="2"
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        Text="Время отправления:   10:00"
+                        HorizontalAlignment="Right"
+                        FontWeight="Bold"
+                        FontSize="12">
+                    </TextBlock>
+                </Grid>
+
+                <Grid
+                    Margin="0,10,0,0"
+                    Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        Text="Список пассажиров, следующих по маршруту">
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Style="{StaticResource TextBlock_NormalStyle}"
+                        Text="23 января 2012 г."
+                        HorizontalAlignment="Right"
+                        Margin="0,0,50,0">
+                    </TextBlock>
+                </Grid>
+
+                <DataGrid
+                    Style="{StaticResource DataGrid_BaseStyle}"
+                    Name="dataGrid"
+                    Margin="0,2,0,0"
+                    Grid.Row="2">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="№ места"
+                            Width="50"
+                            HeaderStyle="{StaticResource DataGrid_GrayHeaderStyle}"
+                            Binding="{Binding SeatNumber}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="БК"
+                            HeaderStyle="{StaticResource DataGrid_GrayHeaderStyle}"
+                            Width="30"
+                            Binding="{Binding BK}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Ф.И.О."
+                            HeaderStyle="{StaticResource DataGrid_GrayHeaderStyle}"
+                            Width="1.2*"
+                            Binding="{Binding FullName}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Паспортные данные (№, серия)"
+                            HeaderStyle="{StaticResource DataGrid_GrayHeaderStyle}"
+                            Width="*"
+                            Binding="{Binding PersonalInfo}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Пункт назначения"
+                            HeaderStyle="{StaticResource DataGrid_GrayHeaderStyle}"
+                            Width="170"
+                            Binding="{Binding ArrivalTown}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Header="Стоимость проезда"
+                            HeaderStyle="{StaticResource DataGrid_GrayHeaderStyle}"
+                            Width="80"
+                            Binding="{Binding Price}">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Grid
+                    Margin="0,0,0,0"
+                    Grid.Row="4"
+                    HorizontalAlignment="Right">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"></ColumnDefinition>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        FontWeight="Bold"
+                        FontSize="12"
+                        Text="Итого на сумму : ">
+                    </TextBlock>
+
+                    <Border
+                        Grid.Column="1"
+                        Style="{StaticResource Border_CellStyle}">
+
+                        <TextBlock
+                            Style="{StaticResource TextBlock_CenterTableStyle}"
+                            Text="1700.00">
+                        </TextBlock>
+                    </Border>
+                </Grid>
+
+            </Grid>
+
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,114 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:extToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended"
+                    xmlns:cnv="clr-namespace:VlastelinClient.Util.Converters"
+                    xmlns:local="clr-namespace:VlastelinClient"
+                    xmlns:uc="clr-namespace:VlastelinClient.UserControls"
+                    xmlns:s="clr-namespace:VlastelinClient.Util">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ColorsAndBrushesRD.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <!--CONVERTERS-->
+
+    <cnv:BoolToVisibilityConverter
+		x:Key="boolToVisibilityConverter" />
+    <cnv:MultiValuesConverter
+		x:Key="multiValuesConverter" />
+    <cnv:RowColumnToCellConverter
+		x:Key="RowColumnToCellConverter" />
+    <cnv:TripsAvailableToColorConverter
+		x:Key="TripsAvailableToColorConverter" />
+    <cnv:DateTimeFormatConverter
+		x:Key="DateTimeFormatConverter" />
+
+    <!--/ CONVERTERS-->
+
+    <!--DEFAULT VALUES-->
+
+    <sys:Double
+		x:Key="TextElement_Default_FontSize">14</sys:Double>
+
+    <sys:Double
+		x:Key="TextElement_Small_FontSize">12</sys:Double>
+
+    <FontFamily
+		x:Key="TextElement_Default_FontFamily">Arial</FontFamily>
+
+    <sys:Double
+		x:Key="TextElement_Default_Height">25</sys:Double>
+
+    <sys:String
+        x:Key="Mask_Natural_Digit">^[0-9]*$</sys:String>
+
+    <sys:String
+        x:Key="Mask_Float_Digit">^[0-9]*\.?[0-9]*$</sys:String>
+
+    <!-- / DEFAULT VALUES-->
+
+
+    <!--SIZE-->
+
+    <sys:Double
+		x:Key="Size_Image_Normal_CommonAction">40</sys:Double>
+
+    <sys:Double
+		x:Key="Size_Image_Normal_Action">50</sys:Double>
+
+    <!-- / SIZE-->
+
+
+    <!--MARGIN/PADDING-->
+
+    <Thickness
+        x:Key="Margin_Standart_Bottom">0,0,0,10</Thickness>
+
+    <Thickness
+        x:Key="Margin_TextBlock_Filter">30,5,5,5</Thickness>
+
+    <Thickness
+        x:Key="Margin_TextBox_Filter">40,0,0,0</Thickness>
+
+    <Thickness
+        x:Key="Margin_Border_Outside">10</Thickness>
+
+    <Thickness
+        x:Key="Padding_Border_Inside">20</Thickness>
+
+    <Thickness
+        x:Key="Padding_Default">5,2</Thickness>
+
+    <Thickness
+        x:Key="Margin_Default">5,2</Thickness>
+
+    <Thickness
+        x:Key="Margin_Border_Addition_Info">0,25,0,25</Thickness>
+
+    <Thickness
+        x:Key="Padding_Border_Addition_Info">10</Thickness>
+
+    <!--/ MARGIN/PADDING-->
+
+    <!-- BASE STYLE -->
+
+    <Style
+		x:Key="BaseStyle">
+        <Setter
+			Property="TextElement.FontFamily"
+			Value="{StaticResource TextElement_Default_FontFamily}" />
+        <!--<Setter
+			Property="TextElement.FontSize"
+			Value="{StaticResource TextElement_Default_FontSize}" />-->
+        <Setter
+			Property="TextElement.FontWeight"
+			Value="Normal" />
+        <Setter
+			Property="UIElement.SnapsToDevicePixels"
+			Value="True" />
+    </Style>
+
+    <!-- / BASE STYLE-->
+
+</ResourceDictionary>
