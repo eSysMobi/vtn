@@ -190,24 +190,21 @@ namespace VlastelinServer.DAO
 
         private void RemoveUserFromRole(string login, string role)
         {
-            StringBuilder query = new StringBuilder("DELETE FROM MembershipUsersInRoles ");
-            query.Append(string.Format("WHERE ApplicationName='{0}' ", vlastelinAppName));
-            query.Append(string.Format("AND Username ='{0}' ", login));
-            query.Append(string.Format("AND Rolename='{0}' ", role));
             List<MySqlParameter> parameters = new List<MySqlParameter>();
             parameters.AddErrorOutputParameter();
-
-            this.Execute_StoredProcedure(CommandType.Text, query.ToString(), parameters);
+            parameters.AddInputParameter("AppName", DbType.String, vlastelinAppName);
+            parameters.AddInputParameter("login", DbType.String, login);
+            parameters.AddInputParameter("role", DbType.String, role);            
+            this.Execute_StoredProcedure(CommandType.StoredProcedure, "sp_muser_remove_role", parameters);
         }
         private void RemoveAllRolesForUser(string login)
         {
-            StringBuilder query = new StringBuilder("DELETE FROM MembershipUsersInRoles ");
-            query.Append(string.Format("WHERE ApplicationName='{0}' ", vlastelinAppName));
-            query.Append(string.Format("AND Username ='{0}' ", login));
             List<MySqlParameter> parameters = new List<MySqlParameter>();
             parameters.AddErrorOutputParameter();
-
-            this.Execute_StoredProcedure(CommandType.Text, query.ToString(), parameters);
+            parameters.AddInputParameter("AppName", DbType.String, vlastelinAppName);
+            parameters.AddInputParameter("login", DbType.String, login);
+            parameters.AddInputParameter("role", DbType.String, null);
+            this.Execute_StoredProcedure(CommandType.StoredProcedure, "sp_muser_remove_role", parameters);
         }
         private void AddUserToRole(string login, string role)
         {
